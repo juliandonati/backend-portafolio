@@ -1,0 +1,88 @@
+package com.juliandonati.backendPortafolio.security.service;
+
+import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
+import com.juliandonati.backendPortafolio.security.domain.User;
+import com.juliandonati.backendPortafolio.security.dto.RegisterRequestDto;
+import com.juliandonati.backendPortafolio.security.exception.UserAlreadyExistsException;
+import com.juliandonati.backendPortafolio.security.mapper.UserMapper;
+import com.juliandonati.backendPortafolio.security.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
+public class UserServiceImpl implements UserService{
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public User findById(long id) throws ResourceNotFoundException {
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró un usuario de id: " + id));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public User findByEmail(String email) throws ResourceNotFoundException {
+        return userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("No se encontró un usuario con el email: " + email));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new ResourceNotFoundException("No se encontró un usuario con el nombre: " + username));
+    }
+
+    @Override
+    public User save(User user) throws ResourceNotFoundException {
+        return userRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public User register(RegisterRequestDto registerRequestDto) {
+        if(userRepository.findByUsername(registerRequestDto.getUsername()).isPresent())
+            throw new UserAlreadyExistsException("Ya existe un usuario con el nombre: " + registerRequestDto.getUsername());
+        if(userRepository.findByEmail(registerRequestDto.getEmail()).isPresent())
+            throw new UserAlreadyExistsException("Ya existe un usuario con el email: " + registerRequestDto.getEmail());
+
+        User userToSave = userMapper.toEntity(registerRequestDto);
+
+        return userRepository.save(userToSave);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        if(!userRepository.existsById(id))
+            throw new ResourceNotFoundException("No existe un usuario con la id: " + id);
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteByEmail(String email) {
+        if(userRepository.findByEmail(email).isEmpty())
+            throw new ResourceNotFoundException("No existe un usuario con el email: " + email);
+        userRepository.deleteByEmail(email);
+    }
+
+    @Override
+    @Transactional
+    public void deleteByUsername(String username) {
+        if(userRepository.findByUsername(username).isEmpty())
+            throw new ResourceNotFoundException("No existe un usuario con el nombre: " + username);
+        userRepository.deleteByUsername(username);
+    }
+}

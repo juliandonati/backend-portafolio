@@ -1,0 +1,20 @@
+package com.juliandonati.backendPortafolio.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+public class AboutMeDto {
+    @NotBlank(message = "El título de tu 'SOBRE MÍ' no puede estar en blanco")
+    @Size(max = 50, message = "El título no puede sobrepasar los 50 carácteres")
+    private String title;
+    @NotBlank(message = "Debes ingresar una descripción")
+    @Size(max=255, message = "La descripción no puede sobrepasar los 255 carácteres")
+    private String description;
+    private String bgImgUrl;
+    private String buttonText;
+    private String buttonUrl;
+}
