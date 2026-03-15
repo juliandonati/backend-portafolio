@@ -13,8 +13,6 @@ public class DegreeSecurityEvaluator {
     private final DegreeRepository degreeRepository;
 
     public boolean isOwner(Long degreeId, String username){
-        return degreeRepository.findById(degreeId).orElseThrow(() -> new ResourceNotFoundException("No existe un título académico de id: " + degreeId))
-                .getPortfolio()
-                .getOwner().getUsername().equals(username);
+        return degreeRepository.isDegreeByIdOwnedByUsername(degreeId, username);
     }
 }

@@ -26,4 +26,10 @@ public interface JobRepository extends JpaRepository<Job, Long> {
             "JOIN p.experience AS jobs " +
             "WHERE u.username = :username")
     List<Job> findByOwnerUsername(@Param("username") String username);
+
+    @Query("SELECT CASE WHEN count(jobOwner) > 0 and jobOwner = :username THEN TRUE ELSE FALSE END FROM Job j " +
+            "JOIN j.portfolio AS p " +
+            "JOIN p.owner AS jobOwner " +
+            "WHERE j.id = :id")
+    boolean IsJobByIdOwnedByUsername(@Param("id")  Long id, @Param("username") String username);
 }

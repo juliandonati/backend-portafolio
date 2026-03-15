@@ -26,4 +26,10 @@ public interface SkillRepository extends JpaRepository<Skill, Long> {
             "JOIN p.skills AS skills " +
             "WHERE u.username = :username")
     List<Skill> findByOwnerUsername(@Param("username") String username);
+
+    @Query("SELECT CASE WHEN count(skillOwner) > 0 and skillOwner = :username THEN TRUE ELSE FALSE END FROM Skill s " +
+            "JOIN s.portfolio AS p " +
+            "JOIN p.owner AS skillOwner " +
+            "WHERE s.id = :id")
+    boolean isSkillByIdOwnedByUsername(@Param("id")  Long id, @Param("username") String username);
 }

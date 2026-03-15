@@ -11,8 +11,6 @@ public class JobSecurityEvaluator {
     private final JobRepository jobRepository;
 
     public boolean isOwner(Long jobId, String username){
-        return jobRepository.findById(jobId).orElseThrow(() -> new ResourceNotFoundException("No existe una experiencia laboral de id: " + jobId))
-                .getPortfolio()
-                .getOwner().getUsername().equals(username);
+        return jobRepository.IsJobByIdOwnedByUsername(jobId, username);
     }
 }

@@ -11,9 +11,6 @@ public class SkillSecurityEvaluator {
     private final SkillRepository skillRepository;
 
     public boolean isOwner(Long skillId, String username){
-        return skillRepository.findById(skillId).orElseThrow(() -> new ResourceNotFoundException("No se encontró una habilidad con la id: " + skillId))
-                .getPortfolio()
-                .getOwner()
-                .getUsername().equals(username);
+        return skillRepository.isSkillByIdOwnedByUsername(skillId, username);
     }
 }
