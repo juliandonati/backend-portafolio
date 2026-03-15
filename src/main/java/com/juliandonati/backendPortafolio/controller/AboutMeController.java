@@ -10,6 +10,8 @@ import com.juliandonati.backendPortafolio.service.AboutMeService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,12 +26,15 @@ public class AboutMeController {
     private final AboutMeMapper aboutMeMapper;
 
     private final PortfolioService portfolioService;
-    private final UserService userService;
+
+    private final Logger logger = LoggerFactory.getLogger(AboutMeController.class);
 
     @GetMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<AboutMeDto> getAboutMeByOwner(@PathVariable String ownerUsername){
+        logger.debug("Buscando About-Me de "+ownerUsername);
         AboutMeDto aboutMeDto = aboutMeService.findByOwnerUsername(ownerUsername);
+        logger.info("¡Devolviendo About-Me de "+ownerUsername+'!');
         return ResponseEntity.ok(aboutMeDto);
     }
 
@@ -38,15 +43,19 @@ public class AboutMeController {
     public ResponseEntity<AboutMeDto> createAboutMe(@PathVariable String ownerUsername,
                                                     @RequestBody @Valid AboutMeDto aboutMeDto){
 
-        if(aboutMeService.existsByOwnerUsername(ownerUsername)){
+        logger.debug("Verificando si "+ownerUsername+" ya tiene un About-me");
+        if(!aboutMeService.existsByOwnerUsername(ownerUsername)){
+            logger.debug("Recuperando el portafolio de "+ ownerUsername);
             Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
             AboutMe aboutMe = aboutMeMapper.toEntity(aboutMeDto);
 
             aboutMe.setPortfolio(portfolio);
             portfolio.setAboutMe(aboutMe);
 
+            logger.debug("Guardando el About-Me de " +  ownerUsername);
             portfolioService.save(portfolio);
 
+            logger.info("¡Se creó el About-Me de "+ownerUsername+'!');
             return new ResponseEntity<>(aboutMeMapper.toDto(aboutMe), HttpStatus.CREATED);
         }
         else
@@ -57,17 +66,21 @@ public class AboutMeController {
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<String> updateAboutMe(@PathVariable String ownerUsername,
                                                     @RequestBody @Valid AboutMeDto aboutMeDto){
+        logger.debug("Verificando que exista el About-Me de "+ ownerUsername);
         Long aboutMeId = aboutMeService.findByOwnerUsername(ownerUsername).getId();
+        logger.debug("¡El About-Me de"+ownerUsername+" existe! Se recuperó la ID.");
         aboutMeService.update(aboutMeDto, aboutMeId);
 
+        logger.info("¡Se actualizó el About-Me de "+ownerUsername+'!');
         return ResponseEntity.ok("¡'SOBRE MÍ' actualizado con éxito!");
     }
 
     @DeleteMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<Void> deleteAboutMe(@PathVariable String ownerUsername){
+        logger.debug("Eliminando el About-Me de "+ownerUsername);
         aboutMeService.deleteByOwnerUsername(ownerUsername);
-
+        logger.info("¡About-Me de "+ownerUsername+" eliminado con éxito!");
         return ResponseEntity.noContent().build();
     }
 }

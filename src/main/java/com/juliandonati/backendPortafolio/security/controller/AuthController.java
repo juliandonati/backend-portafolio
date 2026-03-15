@@ -7,6 +7,8 @@ import com.juliandonati.backendPortafolio.security.jwt.JwtGenerator;
 import com.juliandonati.backendPortafolio.security.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,22 +30,28 @@ public class AuthController {
     private final JwtGenerator jwtGenerator;
     private final UserService userService;
 
+    private final Logger logger = LoggerFactory.getLogger(AuthController.class);
+
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody @Valid RegisterRequestDto registerRequestDto) {
+        logger.debug("Registrando usuario de username: "+ registerRequestDto.getUsername());
         userService.register(registerRequestDto);
+        logger.info("¡Usuario de username: "+ registerRequestDto.getUsername()+" creado con éxito!");
 
         return new ResponseEntity<>("¡El usuario ha sido creado con éxito!", HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponseDto> authenticateUser(@RequestBody @Valid LoginRequestDto loginRequestDto) {
+        logger.debug("Autenticando usuario de login: "+ loginRequestDto.getUsernameOrEmail());
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequestDto.getUsernameOrEmail(), // Por ahora funciona SOLO con username
                         loginRequestDto.getUnencryptedPassword()
                 )
         );
+        logger.info("¡Usuario de login: "+loginRequestDto.getUsernameOrEmail()+" autenticado con éxito!");
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

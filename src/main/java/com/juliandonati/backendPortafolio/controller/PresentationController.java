@@ -11,6 +11,8 @@ import com.juliandonati.backendPortafolio.service.PortfolioService;
 import com.juliandonati.backendPortafolio.service.PresentationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,16 +26,18 @@ public class PresentationController {
     private final PresentationMapper presentationMapper;
 
     private final PortfolioService portfolioService;
-    private final UserService userService;
 
-    private final JwtGenerator jwtGenerator;
     private final PresentationService presentationService;
+
+    private final Logger logger = LoggerFactory.getLogger(PresentationController.class);
 
 
     @GetMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<PresentationDto> getPresentationByOwner(@PathVariable String ownerUsername){
+        logger.debug("Recuperando la presentación del portafolio de: "+ownerUsername);
         PresentationDto presentationDto = presentationService.findByOwnerUsername(ownerUsername);
+        logger.info("¡Devolviendo la presentación del portafolio de: "+ownerUsername+'!');
 
         return ResponseEntity.ok(presentationDto);
     }
@@ -44,13 +48,17 @@ public class PresentationController {
     public ResponseEntity<PresentationDto> createPresentation(@PathVariable String ownerUsername,
                                                             @RequestBody @Valid PresentationDto presentationDto){
 
-        if(presentationService.existsByOwnerUsername(ownerUsername)){
+        logger.debug("Verificando si el portafolio de "+ownerUsername+" existe...");
+        if(!presentationService.existsByOwnerUsername(ownerUsername)){
+            logger.debug("El portafolio de "+ownerUsername+" existe, buscando portafolio...");
             Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
             Presentation presentation = presentationMapper.toEntity(presentationDto);
             presentation.setPortfolio(portfolio);
             portfolio.setPresentation(presentation);
 
+            logger.debug("Guardando la nueva presentación en el portafolio de "+ownerUsername);
             portfolioService.save(portfolio);
+            logger.info("¡Presentación del portafolio de "+ownerUsername+" creada con éxito!");
             return ResponseEntity.ok(presentationDto);
         }
         else
@@ -61,9 +69,11 @@ public class PresentationController {
     @PutMapping("/{ownerUsername}")
     public ResponseEntity<PresentationDto> updatePresentation(@PathVariable String ownerUsername,
                                                               @RequestBody @Valid PresentationDto presentationDto){
+        logger.debug("Buscando presentación del portafolio de " + ownerUsername);
         Long presentationId = presentationService.findByOwnerUsername(ownerUsername).getId();
-
+        logger.debug("Se encontró la presentación del portafolio de "+ownerUsername+", actualizando...");
         presentationService.update(presentationDto, presentationId);
+        logger.info("¡Presentación del portafolio de "+ownerUsername+" actualizada con éxito!");
 
         return new ResponseEntity<>(presentationDto, HttpStatus.CREATED);
     }
@@ -71,7 +81,9 @@ public class PresentationController {
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     @DeleteMapping("/{ownerUsername}")
     public ResponseEntity<Void> deletePresentation(@PathVariable String ownerUsername){
+        logger.debug("Eliminando presentación de "+ ownerUsername);
         presentationService.deleteByOwnerUsername(ownerUsername);
+        logger.info("¡Presentación del portafolio de "+ownerUsername+" eliminado con éxito!");
 
         return ResponseEntity.noContent().build();
     }
