@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface DegreeRepository extends JpaRepository<Degree, Long> {
 
     @Override
-    @Query("SELECT d FROM Degree d JOIN FETCH d.portfolio as p JOIN FETCH p.owner " +
+    @Query("SELECT d FROM Degree d " +
             "WHERE d.id = :id")
     Optional<Degree> findById(Long id);
 
@@ -22,8 +22,8 @@ public interface DegreeRepository extends JpaRepository<Degree, Long> {
     List<Degree> findAll();
 
     @Query("SELECT degrees FROM User u " +
-            "LEFT JOIN FETCH u.ownedPortfolio AS p " +
-            "LEFT JOIN FETCH p.degrees AS degrees " +
+            "JOIN u.ownedPortfolio AS p " +
+            "JOIN p.degrees AS degrees " +
             "WHERE u.username = :username")
     List<Degree> findByOwnerUsername(@Param("username") String username);
 }

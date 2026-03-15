@@ -12,15 +12,15 @@ import java.util.Optional;
 @Repository
 public interface AboutMeRepository extends JpaRepository<AboutMe, Long> {
     @Query("SELECT aboutMe FROM User u " +
-            "LEFT JOIN FETCH u.ownedPortfolio AS p " +
-            "LEFT JOIN FETCH p.aboutMe AS aboutMe " +
+            "JOIN u.ownedPortfolio AS p " +
+            "JOIN p.aboutMe AS aboutMe " +
             "WHERE u.username = :username")
     Optional<AboutMe> findByOwnerUsername(@Param("username") String username);
 
-    @Query("SELECT CASE WHEN aboutMe IS NOT NULL THEN TRUE ELSE FALSE END " +
+    @Query("SELECT CASE WHEN count(aboutMe) > 0 THEN TRUE ELSE FALSE END " +
             "FROM User u " +
-            "JOIN FETCH u.ownedPortfolio AS p " +
-            "JOIN FETCH p.aboutMe AS aboutMe " +
+            "JOIN u.ownedPortfolio AS p " +
+            "JOIN p.aboutMe AS aboutMe " +
             "WHERE u.username = :username")
     boolean existsByOwnerUsername(@Param("username") String username);
 

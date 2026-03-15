@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface JobRepository extends JpaRepository<Job, Long> {
 
     @Override
-    @Query("SELECT j FROM Job j JOIN FETCH j.portfolio as p JOIN FETCH p.owner " +
+    @Query("SELECT j FROM Job j " +
             "WHERE j.id = :id")
     Optional<Job> findById(Long id);
 
@@ -22,8 +22,8 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     List<Job> findAll();
 
     @Query("SELECT jobs FROM User u " +
-            "JOIN FETCH u.ownedPortfolio AS p " +
-            "JOIN FETCH p.experience AS jobs " +
+            "JOIN u.ownedPortfolio AS p " +
+            "JOIN p.experience AS jobs " +
             "WHERE u.username = :username")
     List<Job> findByOwnerUsername(@Param("username") String username);
 }

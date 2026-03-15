@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface SkillRepository extends JpaRepository<Skill, Long> {
 
     @Override
-    @Query("SELECT s FROM Skill s JOIN FETCH s.portfolio as p JOIN FETCH p.owner " +
+    @Query("SELECT s FROM Skill s " +
             "WHERE s.id = :id")
     Optional<Skill> findById(Long id);
 
@@ -22,8 +22,8 @@ public interface SkillRepository extends JpaRepository<Skill, Long> {
     List<Skill> findAll();
 
     @Query("SELECT skills FROM User u " +
-            "JOIN FETCH u.ownedPortfolio AS p " +
-            "JOIN FETCH p.skills AS skills " +
+            "JOIN u.ownedPortfolio AS p " +
+            "JOIN p.skills AS skills " +
             "WHERE u.username = :username")
     List<Skill> findByOwnerUsername(@Param("username") String username);
 }

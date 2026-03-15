@@ -23,7 +23,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Long> {
             "WHERE u.username = :username")
     Optional<Portfolio> findByOwnerUsername(String username);
 
-    @Query("SELECT CASE WHEN u.ownedPortfolio IS NOT NULL THEN TRUE ELSE FALSE END " +
+    @Query("SELECT CASE WHEN count(u.ownedPortfolio) > 0 THEN TRUE ELSE FALSE END " +
             "FROM User u " +
             "WHERE u.username = :username")
     boolean existsByOwnerUsername(@Param("username") String username);

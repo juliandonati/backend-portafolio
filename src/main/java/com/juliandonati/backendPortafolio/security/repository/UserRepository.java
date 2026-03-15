@@ -31,6 +31,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByUsername(String username);
 
-    @Query("SELECT CASE WHEN u.ownedPortfolio IS NOT NULL THEN true ELSE false END FROM User u WHERE u.username = :username")
+    @Query("SELECT CASE WHEN count(u.ownedPortfolio) > 0 THEN true ELSE false END FROM User u WHERE u.username = :username")
     boolean hasPortfolioByUsername(@Param("username") String username);
 }

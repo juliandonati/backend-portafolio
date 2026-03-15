@@ -12,15 +12,15 @@ import java.util.Optional;
 @Repository
 public interface PresentationRepository extends JpaRepository<Presentation, Long> {
     @Query("SELECT presentation FROM User u " +
-            "JOIN FETCH u.ownedPortfolio AS p " +
-            "JOIN FETCH p.presentation AS presentation " +
+            "JOIN u.ownedPortfolio AS p " +
+            "JOIN p.presentation AS presentation " +
             "WHERE u.username = :username")
     Optional<Presentation> findByOwnerUsername(@Param("username") String username);
 
-    @Query("SELECT CASE WHEN presentation IS NOT NULL THEN TRUE ELSE FALSE END " +
+    @Query("SELECT CASE WHEN count(presentation) > 0 THEN TRUE ELSE FALSE END " +
             "FROM User u " +
-            "JOIN FETCH u.ownedPortfolio AS p " +
-            "JOIN FETCH p.presentation AS presentation " +
+            "JOIN u.ownedPortfolio AS p " +
+            "JOIN p.presentation AS presentation " +
             "WHERE u.username = :username")
     boolean existsByOwnerUsername(@Param("username") String username);
 
