@@ -52,4 +52,9 @@ public class JobServiceImpl implements JobService {
 
         jobRepository.deleteById(id);
     }
+
+    @Override
+    public List<JobDto> findByOwnerUsername(String username) throws ResourceNotFoundException {
+        return jobRepository.findByOwnerUsername(username).stream().map(jobMapper::toDto).toList();
+    }
 }

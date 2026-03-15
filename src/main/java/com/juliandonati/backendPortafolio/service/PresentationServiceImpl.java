@@ -52,4 +52,23 @@ public class PresentationServiceImpl implements PresentationService {
 
         presentationRepository.deleteById(id);
     }
+
+    @Override
+    public PresentationDto findByOwnerUsername(String username) throws ResourceNotFoundException{
+        return presentationMapper.toDto(
+                presentationRepository.findByOwnerUsername(username).orElseThrow(() -> new ResourceNotFoundException("No se encontró una presentación del usuario: " + username))
+        );
+    }
+
+    @Override
+    public boolean existsByOwnerUsername(String username) {
+        return presentationRepository.existsByOwnerUsername(username);
+    }
+
+    @Override
+    public void deleteByOwnerUsername(String username) throws ResourceNotFoundException {
+        if(!presentationRepository.existsByOwnerUsername(username))
+            throw new ResourceNotFoundException("No se encontró una presentación del usuario: " + username);
+        presentationRepository.deleteByOwnerUsername(username);
+    }
 }

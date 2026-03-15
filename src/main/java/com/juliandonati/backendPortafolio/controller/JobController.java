@@ -30,8 +30,7 @@ public class JobController {
     @GetMapping("/list/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<List<JobDto>> getAllJobsByOwner(@PathVariable String ownerUsername){
-        Portfolio portfolio = portfolioService.findByOwner(userService.findByUsername(ownerUsername));
-        List<JobDto> jobDtos = portfolio.getExperience().stream().map(jobMapper::toDto).toList();
+        List<JobDto> jobDtos = jobService.findByOwnerUsername(ownerUsername);
 
         return ResponseEntity.ok(jobDtos);
     }
@@ -48,7 +47,7 @@ public class JobController {
     @PostMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<List<JobDto>> createJob(@PathVariable String ownerUsername, @Valid @RequestBody JobDto jobDto){
-        Portfolio portfolio = portfolioService.findByOwner(userService.findByUsername(ownerUsername));
+        Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
         portfolio.addExperience(jobMapper.toEntity(jobDto));
 
         List<JobDto> updatedExperienceDto = portfolioService.save(portfolio)

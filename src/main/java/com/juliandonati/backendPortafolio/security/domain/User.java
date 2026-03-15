@@ -38,12 +38,12 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "owner", cascade =  CascadeType.ALL,  orphanRemoval = true)
+    @OneToOne(mappedBy = "owner", cascade =  CascadeType.ALL,  orphanRemoval = true)
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private Set<Portfolio> ownedPortfolios = new HashSet<>();
+    private Portfolio ownedPortfolio = null;
 
     @ManyToMany
     @JoinTable(
@@ -56,16 +56,6 @@ public class User {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<Portfolio> modifiablePortfolios = new HashSet<>();
-
-
-    public void addOwnedPortfolio(Portfolio portfolio) {
-        ownedPortfolios.add(portfolio);
-        portfolio.setOwner(this);
-    }
-
-    public void removeOwnedPortfolio(Portfolio portfolio) {
-        ownedPortfolios.remove(portfolio);
-    }
 
     public void addRole(Role role) {
         roles.add(role);

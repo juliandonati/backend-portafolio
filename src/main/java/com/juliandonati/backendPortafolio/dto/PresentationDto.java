@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class PresentationDto {
+    private Long id;
     @Size(max=30,message = "El nombre de tu presentación no puede sobrepasar los 30 carácteres")
     @NotBlank(message = "Tu presentación debe tener un nombre")
     private String name;

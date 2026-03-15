@@ -2,19 +2,29 @@ package com.juliandonati.backendPortafolio.repository;
 
 import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.security.domain.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
 public interface PortfolioRepository extends JpaRepository<Portfolio, Long> {
-    @Query("SELECT p FROM Portfolio p JOIN FETCH p.owner LEFT JOIN FETCH p.authorizedUsers " +
-            "LEFT JOIN FETCH p.presentation " +
-            "LEFT JOIN FETCH p.aboutMe " +
-            "LEFT JOIN FETCH p.degrees " +
-            "LEFT JOIN FETCH p.skills " +
-            "LEFT JOIN FETCH p.experience")
-    Optional<Portfolio> findByOwner(User owner);
+    @Query("SELECT u.ownedPortfolio FROM User u " +
+            "LEFT JOIN FETCH u.ownedPortfolio.presentation " +
+            "LEFT JOIN FETCH u.ownedPortfolio.aboutMe " +
+            "LEFT JOIN FETCH u.ownedPortfolio.degrees " +
+            "LEFT JOIN FETCH u.ownedPortfolio.skills " +
+            "LEFT JOIN FETCH u.ownedPortfolio.experience " +
+            "LEFT JOIN FETCH u.ownedPortfolio.authorizedUsers " +
+            "WHERE u.username = :username")
+    Optional<Portfolio> findByOwnerUsername(String username);
+
+    @Query("SELECT CASE WHEN u.ownedPortfolio IS NOT NULL THEN TRUE ELSE FALSE END " +
+            "FROM User u " +
+            "WHERE u.username = :username")
+    boolean existsByOwnerUsername(@Param("username") String username);
 }

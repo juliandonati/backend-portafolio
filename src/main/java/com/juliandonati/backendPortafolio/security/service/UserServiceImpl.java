@@ -3,10 +3,14 @@ package com.juliandonati.backendPortafolio.security.service;
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.security.domain.User;
 import com.juliandonati.backendPortafolio.security.dto.RegisterRequestDto;
+import com.juliandonati.backendPortafolio.security.dto.UserSummaryResponseDto;
 import com.juliandonati.backendPortafolio.security.exception.UserAlreadyExistsException;
 import com.juliandonati.backendPortafolio.security.mapper.UserMapper;
 import com.juliandonati.backendPortafolio.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +26,19 @@ public class UserServiceImpl implements UserService{
 
     @Override
     @Transactional(readOnly = true)
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public Page<UserSummaryResponseDto> findAll(String name, Pageable pageable) {
+        Page<User> usersPage;
+
+        if(name != null && !name.trim().isEmpty())
+            usersPage = userRepository.findByNameContainingIgnoreCase(name,pageable);
+        else
+            usersPage = userRepository.findAll(pageable);
+
+        List<UserSummaryResponseDto> userSummaryResponseDtoList = usersPage.getContent().stream()
+                .map(userMapper::toUserSummaryResponseDto)
+                .toList();
+
+        return new PageImpl<>(userSummaryResponseDtoList, pageable, usersPage.getTotalElements());
     }
 
     @Override
@@ -84,5 +99,12 @@ public class UserServiceImpl implements UserService{
         if(userRepository.findByUsername(username).isEmpty())
             throw new ResourceNotFoundException("No existe un usuario con el nombre: " + username);
         userRepository.deleteByUsername(username);
+    }
+
+    @Override
+    public boolean hasPortfolio(String username) throws ResourceNotFoundException {
+        if(!userRepository.existsByUsername(username))
+            throw new ResourceNotFoundException("No existe un usuario con el nombre: " + username);
+        return userRepository.hasPortfolioByUsername(username);
     }
 }

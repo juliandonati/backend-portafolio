@@ -5,6 +5,7 @@ import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.repository.PortfolioRepository;
 import com.juliandonati.backendPortafolio.security.domain.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,8 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class PortfolioServiceImpl implements PortfolioService{
     private final PortfolioRepository portfolioRepository;
-
-
     @Override
     @Transactional(readOnly = true)
     public Portfolio findById(long id) {
@@ -22,9 +21,15 @@ public class PortfolioServiceImpl implements PortfolioService{
 
     @Override
     @Transactional(readOnly = true)
-    public Portfolio findByOwner(User owner) {
-        return portfolioRepository.findByOwner(owner).orElseThrow(() -> new ResourceNotFoundException("No se encontró el portfolio de " + owner.getUsername()));
+    public Portfolio findByOwnerUsername(String username) {
+        return portfolioRepository.findByOwnerUsername(username).orElseThrow(() -> new ResourceNotFoundException("No se encontró el portfolio de " + username));
     }
+
+    @Override
+    public boolean existsByOwnerUsername(String username) {
+        return portfolioRepository.existsByOwnerUsername(username);
+    }
+
 
     @Override
     @Transactional
@@ -53,6 +58,7 @@ public class PortfolioServiceImpl implements PortfolioService{
     public void deleteById(long id) {
         if(portfolioRepository.findById(id).isEmpty())
             throw new ResourceNotFoundException("No se encontró un portfolio con la id: " + id);
+        System.out.println("holaaaaaaaaaaaaaaaaaaaaaa" + id);
         portfolioRepository.deleteById(id);
     }
 }

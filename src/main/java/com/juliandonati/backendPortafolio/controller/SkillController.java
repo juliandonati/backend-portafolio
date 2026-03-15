@@ -30,10 +30,7 @@ public class SkillController {
     @GetMapping("/list/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<List<SkillDto>> getAllSkillsByOwner(@PathVariable String ownerUsername){
-        List<SkillDto> skillDtos = portfolioService.findByOwner(userService.findByUsername(ownerUsername))
-                .getSkills()
-                .stream().map(skillMapper::toDto)
-                .toList();
+        List<SkillDto> skillDtos = skillService.findSkillsByOwnerUsername(ownerUsername);
 
         return ResponseEntity.ok(skillDtos);
     }
@@ -41,7 +38,7 @@ public class SkillController {
     @PostMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<List<SkillDto>> createSkill(@PathVariable String ownerUsername, @Valid @RequestBody SkillDto skillDto){
-        Portfolio portfolio = portfolioService.findByOwner(userService.findByUsername(ownerUsername));
+        Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
 
         portfolio.addSkill(skillMapper.toEntity(skillDto));
         List<SkillDto> updatedSkillDtos = portfolioService.save(portfolio)

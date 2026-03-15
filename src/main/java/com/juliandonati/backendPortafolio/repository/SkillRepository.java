@@ -3,6 +3,7 @@ package com.juliandonati.backendPortafolio.repository;
 import com.juliandonati.backendPortafolio.domain.Skill;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +20,10 @@ public interface SkillRepository extends JpaRepository<Skill, Long> {
     @Override
     @Query("SELECT s FROM Skill s")
     List<Skill> findAll();
+
+    @Query("SELECT skills FROM User u " +
+            "JOIN FETCH u.ownedPortfolio AS p " +
+            "JOIN FETCH p.skills AS skills " +
+            "WHERE u.username = :username")
+    List<Skill> findByOwnerUsername(@Param("username") String username);
 }

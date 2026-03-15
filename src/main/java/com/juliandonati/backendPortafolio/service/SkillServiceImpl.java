@@ -52,4 +52,9 @@ public class SkillServiceImpl implements SkillService {
 
         skillRepository.deleteById(id);
     }
+
+    @Override
+    public List<SkillDto> findSkillsByOwnerUsername(String username) {
+        return skillRepository.findByOwnerUsername(username).stream().map(skillMapper::toDto).toList();
+    }
 }

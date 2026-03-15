@@ -3,6 +3,7 @@ package com.juliandonati.backendPortafolio.security.mapper;
 import com.juliandonati.backendPortafolio.security.domain.Role;
 import com.juliandonati.backendPortafolio.security.domain.User;
 import com.juliandonati.backendPortafolio.security.dto.RegisterRequestDto;
+import com.juliandonati.backendPortafolio.security.dto.UserSummaryResponseDto;
 import com.juliandonati.backendPortafolio.security.service.RoleService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -25,6 +26,7 @@ public abstract class UserMapper {
     @Mapping(target = "password", source = "registerRequestDto.unencryptedPassword", qualifiedByName = "encryptPassword")
     @Mapping(target = "modifiablePortfolios", ignore = true)
     @Mapping(target = "roles", source = "registerRequestDto.roles", qualifiedByName = "mapStringToRoles")
+    @Mapping(target = "ownedPortfolio", ignore = true)
     public abstract User toEntity(RegisterRequestDto registerRequestDto);
 
     @Named("mapStringToRoles")
@@ -39,4 +41,7 @@ public abstract class UserMapper {
     protected String encryptPassword(String password) {
         return passwordEncoder.encode(password);
     }
+
+
+    public abstract UserSummaryResponseDto toUserSummaryResponseDto(User user);
 }

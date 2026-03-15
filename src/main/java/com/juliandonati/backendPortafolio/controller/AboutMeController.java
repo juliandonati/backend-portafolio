@@ -29,10 +29,7 @@ public class AboutMeController {
     @GetMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<AboutMeDto> getAboutMeByOwner(@PathVariable String ownerUsername){
-        AboutMeDto aboutMeDto = aboutMeMapper.toDto(
-                portfolioService.findByOwner(userService.findByUsername(ownerUsername)).getAboutMe()
-        );
-
+        AboutMeDto aboutMeDto = aboutMeService.findByOwnerUsername(ownerUsername);
         return ResponseEntity.ok(aboutMeDto);
     }
 
@@ -40,8 +37,9 @@ public class AboutMeController {
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<AboutMeDto> createAboutMe(@PathVariable String ownerUsername,
                                                     @RequestBody @Valid AboutMeDto aboutMeDto){
-        Portfolio portfolio = portfolioService.findByOwner(userService.findByUsername(ownerUsername));
-        if(portfolio.getPresentation() == null){
+
+        if(aboutMeService.existsByOwnerUsername(ownerUsername)){
+            Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
             AboutMe aboutMe = aboutMeMapper.toEntity(aboutMeDto);
 
             aboutMe.setPortfolio(portfolio);
@@ -59,9 +57,17 @@ public class AboutMeController {
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<String> updateAboutMe(@PathVariable String ownerUsername,
                                                     @RequestBody @Valid AboutMeDto aboutMeDto){
-        Long aboutMeId = portfolioService.findByOwner(userService.findByUsername(ownerUsername)).getAboutMe().getId();
+        Long aboutMeId = aboutMeService.findByOwnerUsername(ownerUsername).getId();
         aboutMeService.update(aboutMeDto, aboutMeId);
 
         return ResponseEntity.ok("¡'SOBRE MÍ' actualizado con éxito!");
+    }
+
+    @DeleteMapping("/{ownerUsername}")
+    @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
+    public ResponseEntity<Void> deleteAboutMe(@PathVariable String ownerUsername){
+        aboutMeService.deleteByOwnerUsername(ownerUsername);
+
+        return ResponseEntity.noContent().build();
     }
 }

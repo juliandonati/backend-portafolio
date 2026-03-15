@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class Portfolio {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private User owner;
 
@@ -44,6 +45,12 @@ public class Portfolio {
     @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Job> experience = new HashSet<>();
 
+    @Column(length = 8, nullable = true)
+    @ColumnDefault("'#000000'")
+    private String primaryColorHex;
+    @Column(length = 8, nullable = true)
+    @ColumnDefault("'#ffffff'")
+    private String secondaryColorHex;
 
     public void addAuthorizedUser(User user) {
         authorizedUsers.add(user);

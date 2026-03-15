@@ -51,4 +51,24 @@ public class AboutMeServiceImpl implements AboutMeService {
 
         aboutMeRepository.deleteById(id);
     }
+
+    @Override
+    public AboutMeDto findByOwnerUsername(String username) throws ResourceNotFoundException {
+        return aboutMeMapper.toDto(
+                aboutMeRepository.findByOwnerUsername(username).orElseThrow(() -> new ResourceNotFoundException("El usuario o el portafolio no existe"))
+                );
+    }
+
+    @Override
+    public boolean existsByOwnerUsername(String username) {
+        return aboutMeRepository.existsByOwnerUsername(username);
+    }
+
+    @Override
+    public void deleteByOwnerUsername(String username) throws ResourceNotFoundException {
+        if (!aboutMeRepository.existsByOwnerUsername(username))
+            throw new ResourceNotFoundException("El usuario o el portafolio no existe");
+
+        aboutMeRepository.deleteByOwnerUsername(username);
+    }
 }

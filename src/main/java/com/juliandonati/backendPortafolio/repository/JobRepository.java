@@ -3,6 +3,7 @@ package com.juliandonati.backendPortafolio.repository;
 import com.juliandonati.backendPortafolio.domain.Job;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +20,10 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     @Override
     @Query("SELECT j FROM Job j")
     List<Job> findAll();
+
+    @Query("SELECT jobs FROM User u " +
+            "JOIN FETCH u.ownedPortfolio AS p " +
+            "JOIN FETCH p.experience AS jobs " +
+            "WHERE u.username = :username")
+    List<Job> findByOwnerUsername(@Param("username") String username);
 }

@@ -52,4 +52,10 @@ public class DegreeServiceImpl implements DegreeService {
 
         degreeRepository.deleteById(id);
     }
+
+
+    @Override
+    public List<DegreeDto> findByOwnerUsername(String username) throws ResourceNotFoundException {
+        return degreeRepository.findByOwnerUsername(username).stream().map(degreeMapper::toDto).toList();
+    }
 }

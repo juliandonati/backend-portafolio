@@ -42,10 +42,11 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/login").permitAll()
-                        .requestMatchers("/h2-console/**").permitAll()
-                                .requestMatchers(HttpMethod.GET,"/api/v1/portfolio/{ownerUsername}").permitAll()
-                        .anyRequest().authenticated()
+                                .requestMatchers("/api/v1/auth/login").permitAll()
+                                .requestMatchers(HttpMethod.GET,"/api/v1/users").permitAll()
+                                .requestMatchers("/h2-console/**").permitAll()
+                                .requestMatchers(HttpMethod.GET,"/api/v1/portfolio/{ownerUsername}","/api/v1/portfolio/{ownerUsername}/exists").permitAll()
+                                .anyRequest().authenticated()
                         // El resto de rutas van a estar protegidas por @PreAuthorized
                 )
                 .headers(AbstractHttpConfigurer::disable); // todo Corregir antes de producción. Es inseguro.
@@ -75,7 +76,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(Arrays.asList(
-                "http://direccionfrontend.com"
+                "http://127.0.0.1:5500/"
         ));
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));

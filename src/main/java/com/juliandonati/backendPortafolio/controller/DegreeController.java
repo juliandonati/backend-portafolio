@@ -32,9 +32,7 @@ public class DegreeController {
     @GetMapping("/list/{ownerUsername}")
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
     public ResponseEntity<List<DegreeDto>> getAllDegreesByOwner(@PathVariable String ownerUsername){
-        List<DegreeDto> degreeDtos = portfolioService.findByOwner(userService.findByUsername(ownerUsername)).getDegrees()
-                .stream().map(degreeMapper::toDto)
-                .toList();
+        List<DegreeDto> degreeDtos = degreeService.findByOwnerUsername(ownerUsername);
 
         return ResponseEntity.ok(degreeDtos);
     }
@@ -42,7 +40,7 @@ public class DegreeController {
     @PostMapping("/{ownerUsername}")
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
     public ResponseEntity<List<DegreeDto>> createDegree(@PathVariable String ownerUsername, @Valid @RequestBody DegreeDto degreeDto){
-        Portfolio portfolio = portfolioService.findByOwner(userService.findByUsername(ownerUsername));
+        Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
         Degree degree = degreeMapper.toEntity(degreeDto);
 
         portfolio.addDegree(degree);

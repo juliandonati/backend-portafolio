@@ -13,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -47,6 +48,20 @@ public class DataLoader implements CommandLineRunner {
             roleService.save(adminRole);
         }
 
+        User userTestUser;
+        try{
+            userTestUser = userService.findByUsername("usuario");
+        }
+        catch(ResourceNotFoundException ex){
+            RegisterRequestDto requestDto = new RegisterRequestDto();
+            requestDto.setUsername("usuario");
+            requestDto.setUnencryptedPassword("1234");
+            requestDto.setRoles(Collections.singleton("ROLE_USER"));
+            requestDto.setEmail("usuario@example.com");
+            requestDto.setDisplayName("usuario test");
+
+            userTestUser = userService.register(requestDto);
+        }
 
         User adminTestUser;
         try{
@@ -70,12 +85,12 @@ public class DataLoader implements CommandLineRunner {
 
         Portfolio adminTestPortfolio;
         try{
-            adminTestPortfolio = portfolioService.findByOwner(adminTestUser);
+            adminTestPortfolio = portfolioService.findByOwnerUsername(adminTestUser.getUsername());
         }
         catch (ResourceNotFoundException ex){
             adminTestPortfolio = new Portfolio();
 
-            Presentation presentation = new Presentation(null,"PRESENTATION NAME","PRESENTATION TITLE","PRESENTATION DESCRIPTION",null,adminTestPortfolio);
+            Presentation presentation = new Presentation(null,"John Doe","Ingeniero en Sistemas","Apasionado por la programación y por el café.","https://i.imgur.com/w5FBSjQ.jpeg",adminTestPortfolio);
             adminTestPortfolio.setPresentation(presentation);
 
             AboutMe aboutMe = new AboutMe(null,"SOBRE MÍ","TEXTO SOBRE MÍ",null,null,null,adminTestPortfolio);
@@ -83,12 +98,12 @@ public class DataLoader implements CommandLineRunner {
 
             adminTestPortfolio.addDegree(new Degree(null,"TÍTULO ACADÉMICO 1","DESCRIPCIÓN DE TÍTULO ACADÉMICO", LocalDate.now(),null,null,adminTestPortfolio));
 
-            adminTestPortfolio.addSkill(new Skill(null,"HABILIDAD 1","DESCRIPCIÓN DE HABILIDAD 1","NIVEL DE HABILIDAD 1",null,null,adminTestPortfolio));
+            adminTestPortfolio.addSkill(new Skill(null,"Java","Se programar sistemas complejos en Java, lorem ipsum...","Avanzado","https://i.imgur.com/kS5Id9I.png","Backend",adminTestPortfolio));
 
             adminTestPortfolio.addExperience(new Job(null,"TRABAJO 1","POSICIÓN TRABAJO 1","DESCRIPCIÓN TRABAJO 1",LocalDate.now(),null,adminTestPortfolio));
 
             adminTestPortfolio.setOwner(adminTestUser);
-            adminTestUser.addOwnedPortfolio(adminTestPortfolio);
+            adminTestUser.setOwnedPortfolio(adminTestPortfolio);
 
             userService.save(adminTestUser); // Se vuelve a guardar el usuario de prueba, solo que ahora se le agrega el portfolio.
         }

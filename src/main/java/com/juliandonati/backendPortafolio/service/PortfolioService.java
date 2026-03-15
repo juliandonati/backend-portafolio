@@ -6,7 +6,9 @@ import com.juliandonati.backendPortafolio.security.domain.User;
 
 public interface PortfolioService {
     Portfolio findById(long id);
-    Portfolio findByOwner(User owner);
+    Portfolio findByOwnerUsername(String username);
+
+    boolean existsByOwnerUsername(String username);
 
     Portfolio save(Portfolio portfolio);
 

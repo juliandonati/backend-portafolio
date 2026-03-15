@@ -4,9 +4,7 @@ import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.domain.Presentation;
 import com.juliandonati.backendPortafolio.dto.PresentationDto;
 import com.juliandonati.backendPortafolio.exception.DuplicatedAttributeException;
-import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.mapper.PresentationMapper;
-import com.juliandonati.backendPortafolio.security.domain.User;
 import com.juliandonati.backendPortafolio.security.jwt.JwtGenerator;
 import com.juliandonati.backendPortafolio.security.service.UserService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
@@ -35,10 +33,9 @@ public class PresentationController {
     @GetMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<PresentationDto> getPresentationByOwner(@PathVariable String ownerUsername){
-        User owner = userService.findByUsername(ownerUsername);
-        Presentation presentation = portfolioService.findByOwner(owner).getPresentation();
+        PresentationDto presentationDto = presentationService.findByOwnerUsername(ownerUsername);
 
-        return ResponseEntity.ok(presentationMapper.toDto(presentation));
+        return ResponseEntity.ok(presentationDto);
     }
 
     // authentication.name tiene como valor el subject de nuestro JWT
@@ -46,9 +43,9 @@ public class PresentationController {
     @PostMapping("/{ownerUsername}")
     public ResponseEntity<PresentationDto> createPresentation(@PathVariable String ownerUsername,
                                                             @RequestBody @Valid PresentationDto presentationDto){
-        User owner = userService.findByUsername(ownerUsername);
-        Portfolio portfolio = portfolioService.findByOwner(owner);
-        if(portfolio.getPresentation() == null){
+
+        if(presentationService.existsByOwnerUsername(ownerUsername)){
+            Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
             Presentation presentation = presentationMapper.toEntity(presentationDto);
             presentation.setPortfolio(portfolio);
             portfolio.setPresentation(presentation);
@@ -64,11 +61,18 @@ public class PresentationController {
     @PutMapping("/{ownerUsername}")
     public ResponseEntity<PresentationDto> updatePresentation(@PathVariable String ownerUsername,
                                                               @RequestBody @Valid PresentationDto presentationDto){
-        User owner = userService.findByUsername(ownerUsername);
-        Long presentationId = portfolioService.findByOwner(owner).getPresentation().getId();
+        Long presentationId = presentationService.findByOwnerUsername(ownerUsername).getId();
 
         presentationService.update(presentationDto, presentationId);
 
         return new ResponseEntity<>(presentationDto, HttpStatus.CREATED);
+    }
+
+    @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
+    @DeleteMapping("/{ownerUsername}")
+    public ResponseEntity<Void> deletePresentation(@PathVariable String ownerUsername){
+        presentationService.deleteByOwnerUsername(ownerUsername);
+
+        return ResponseEntity.noContent().build();
     }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class AboutMeDto {
+    private Long id;
     @NotBlank(message = "El título de tu 'SOBRE MÍ' no puede estar en blanco")
     @Size(max = 50, message = "El título no puede sobrepasar los 50 carácteres")
     private String title;
