@@ -6,6 +6,8 @@ import com.juliandonati.backendPortafolio.security.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -33,6 +35,7 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtAuthEntryPoint jwtAuthEntryPoint;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final Environment environment;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -41,15 +44,18 @@ public class SecurityConfig {
                 .cors(corsCustomizer -> corsCustomizer.configurationSource(corsConfigurationSource()))
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/api/v1/auth/login").permitAll()
-                                .requestMatchers(HttpMethod.GET,"/api/v1/users").permitAll()
-                                .requestMatchers("/h2-console/**").permitAll()
-                                .requestMatchers(HttpMethod.GET,"/api/v1/portfolio/{ownerUsername}","/api/v1/portfolio/{ownerUsername}/exists").permitAll()
-                                .anyRequest().authenticated()
-                        // El resto de rutas van a estar protegidas por @PreAuthorized
-                )
-                .headers(AbstractHttpConfigurer::disable); // todo Corregir antes de producción. Es inseguro.
+                .authorizeHttpRequests(auth -> {
+                    if(environment.acceptsProfiles(Profiles.of("dev")))
+                        auth.requestMatchers("/swagger-ui/**","/v3/api-docs/**","/v3/api-docs.yaml","/swagger-resources/**","/webjars/**").permitAll();
+                    auth
+                            .requestMatchers("/api/v1/auth/login").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/v1/users").permitAll()
+                            .requestMatchers("/h2-console/**").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/v1/portfolio/{ownerUsername}", "/api/v1/portfolio/{ownerUsername}/exists").permitAll()
+                            .anyRequest().authenticated();
+                    // El resto de rutas van a estar protegidas por @PreAuthorized
+                });
+
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 

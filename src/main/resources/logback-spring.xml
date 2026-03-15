@@ -6,10 +6,10 @@
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/backend-portafolio.log</file>
-        <rollingBackPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/backend-portafolio.%{yyyy-MM-dd}.log</fileNamePattern>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/backend-portafolio.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>7</maxHistory>
-        </rollingBackPolicy>
+        </rollingPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
         </encoder>
