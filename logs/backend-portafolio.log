@@ -103,3 +103,89 @@ Caused by: java.lang.IllegalStateException: Can't configure requestMatchers afte
 2026-03-15 20:49:51.091 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 13.724 seconds (process running for 14.702)
 2026-03-15 20:49:57.336 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2026-03-15 20:49:58.266 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 504 ms
+2026-03-15 20:55:04.833 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-15 20:55:04.837 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-15 20:55:04.845 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-15 20:55:04.849 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-15 20:55:05.363 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-15 21:05:33.096 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.1 with PID 17388 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-03-15 21:05:33.111 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-03-15 21:05:33.112 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
+2026-03-15 21:05:33.154 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-15 21:05:33.155 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-15 21:05:34.579 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-15 21:05:34.661 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 8 JPA repository interfaces.
+2026-03-15 21:05:35.298 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-15 21:05:35.311 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-15 21:05:35.313 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-15 21:05:35.313 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-15 21:05:35.371 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2216 ms
+2026-03-15 21:05:36.126 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-15 21:05:36.173 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-15 21:05:37.827 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4d7e70ed
+2026-03-15 21:05:37.828 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-15 21:05:41.854 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-15 21:05:41.943 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-15 21:05:42.933 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-15 21:05:43.177 WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'portfolioController' defined in file [G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes\com\juliandonati\backendPortafolio\controller\PortfolioController.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'userServiceImpl' defined in file [G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes\com\juliandonati\backendPortafolio\security\service\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userMapperImpl': Unsatisfied dependency expressed through field 'passwordEncoder': Error creating bean with name 'securityConfig' defined in file [G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes\com\juliandonati\backendPortafolio\security\config\SecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 4: No qualifying bean of type 'java.lang.String' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-03-15 21:05:43.178 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-15 21:05:43.181 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-15 21:05:43.723 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-15 21:05:43.726 INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-15 21:05:43.733 INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-15 21:05:43.751 ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 4 of constructor in com.juliandonati.backendPortafolio.security.config.SecurityConfig required a bean of type 'java.lang.String' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'java.lang.String' in your configuration.
+
+2026-03-15 21:06:15.434 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.1 with PID 25096 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-03-15 21:06:15.436 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-03-15 21:06:15.437 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
+2026-03-15 21:06:15.472 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-15 21:06:15.473 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-15 21:06:16.230 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-15 21:06:16.308 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70 ms. Found 8 JPA repository interfaces.
+2026-03-15 21:06:16.817 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-15 21:06:16.828 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-15 21:06:16.829 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-15 21:06:16.829 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-15 21:06:16.878 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1405 ms
+2026-03-15 21:06:17.473 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-15 21:06:17.505 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-15 21:06:18.308 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@145a0cdf
+2026-03-15 21:06:18.310 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-15 21:06:21.876 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-15 21:06:21.948 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-15 21:06:22.816 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-15 21:06:23.135 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-03-15 21:06:23.265 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-15 21:06:24.017 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://ep-rough-dust-acjm4p4p-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require'
+2026-03-15 21:06:24.069 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-15 21:06:24.082 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-15 21:06:24.088 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 9.092 seconds (process running for 9.773)
+2026-03-15 21:06:41.362 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-15 21:06:41.432 DEBUG c.j.b.s.controller.UserController - Recuperando usuarios mediante el filtro: a
+2026-03-15 21:06:41.721 INFO  c.j.b.s.controller.UserController - ¡Devolviendo todos los usuarios que contengan el filtro: a!
+2026-03-15 21:06:41.802 WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-03-15 21:06:43.026 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: admin
+2026-03-15 21:06:43.190 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de admin recuperado con éxito!
+2026-03-15 21:06:46.809 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-15 21:06:46.813 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-15 21:06:46.819 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-15 21:06:46.822 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-15 21:06:47.378 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

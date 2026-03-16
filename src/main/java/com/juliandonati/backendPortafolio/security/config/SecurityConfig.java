@@ -4,6 +4,7 @@ import com.juliandonati.backendPortafolio.security.jwt.JwtAuthEntryPoint;
 import com.juliandonati.backendPortafolio.security.jwt.JwtAuthenticationFilter;
 import com.juliandonati.backendPortafolio.security.service.RoleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -36,6 +37,9 @@ public class SecurityConfig {
     private final JwtAuthEntryPoint jwtAuthEntryPoint;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final Environment environment;
+
+    @Value("${ALLOWED_CORS_URL}")
+    private String allowedCorsUrl;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -82,7 +86,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(Arrays.asList(
-                "http://127.0.0.1:5500/"
+                allowedCorsUrl
         ));
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
