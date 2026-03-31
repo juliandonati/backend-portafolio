@@ -1,4 +1,4 @@
-** Este repositorio contiene el Backend de un proyecto que hice para reforzar mis conocimientos en Spring Boot **
+**Este repositorio contiene el Backend de un proyecto que hice para reforzar mis conocimientos en Spring Boot**
 
 - Contiene todos los endpoints necesarios para hacer que funcione con la página 'Port-a-folio' con la que se complementará una vez terminada.
 
