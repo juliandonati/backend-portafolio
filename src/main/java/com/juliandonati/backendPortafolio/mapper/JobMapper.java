@@ -5,7 +5,6 @@ import com.juliandonati.backendPortafolio.dto.JobDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public interface JobMapper {
@@ -15,5 +14,6 @@ public interface JobMapper {
     @Mapping(target = "portfolio", ignore = true)
     Job toEntity(JobDto dto);
 
+    @Mapping(target = "id", ignore = true)
     Job updateEntity(JobDto dto, @MappingTarget Job entity);
 }

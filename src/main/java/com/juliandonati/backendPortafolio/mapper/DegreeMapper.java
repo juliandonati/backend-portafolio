@@ -5,7 +5,6 @@ import com.juliandonati.backendPortafolio.dto.DegreeDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public interface DegreeMapper {
@@ -15,5 +14,6 @@ public interface DegreeMapper {
     @Mapping(target="portfolio",ignore = true)
     Degree toEntity(DegreeDto dto);
 
+    @Mapping(target = "id", ignore = true)
     Degree updateEntity(DegreeDto dto, @MappingTarget Degree entity);
 }

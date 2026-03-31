@@ -5,7 +5,6 @@ import com.juliandonati.backendPortafolio.dto.SkillDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public interface SkillMapper {
@@ -15,5 +14,6 @@ public interface SkillMapper {
     @Mapping(target = "portfolio", ignore = true)
     Skill toEntity(SkillDto dto);
 
+    @Mapping(target = "id", ignore = true)
     Skill updateEntity(SkillDto dto, @MappingTarget Skill entity);
 }

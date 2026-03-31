@@ -5,7 +5,6 @@ import com.juliandonati.backendPortafolio.dto.PresentationDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public interface PresentationMapper {
@@ -15,5 +14,6 @@ public interface PresentationMapper {
     @Mapping(target = "portfolio", ignore = true)
     Presentation toEntity(PresentationDto dto);
 
+    @Mapping(target = "id", ignore = true)
     Presentation updateEntity(PresentationDto dto, @MappingTarget Presentation entity);
 }
