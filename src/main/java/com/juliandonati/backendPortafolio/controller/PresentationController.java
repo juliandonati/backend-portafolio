@@ -5,8 +5,6 @@ import com.juliandonati.backendPortafolio.domain.Presentation;
 import com.juliandonati.backendPortafolio.dto.PresentationDto;
 import com.juliandonati.backendPortafolio.exception.DuplicatedAttributeException;
 import com.juliandonati.backendPortafolio.mapper.PresentationMapper;
-import com.juliandonati.backendPortafolio.security.jwt.JwtGenerator;
-import com.juliandonati.backendPortafolio.security.service.UserService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
 import com.juliandonati.backendPortafolio.service.PresentationService;
 import jakarta.validation.Valid;
@@ -59,7 +57,7 @@ public class PresentationController {
             logger.debug("Guardando la nueva presentación en el portafolio de "+ownerUsername);
             portfolioService.save(portfolio);
             logger.info("¡Presentación del portafolio de "+ownerUsername+" creada con éxito!");
-            return ResponseEntity.ok(presentationDto);
+            return new ResponseEntity<>(presentationDto, HttpStatus.CREATED);
         }
         else
             throw new DuplicatedAttributeException("Solo puede haber una presentación por usuario.");
@@ -75,7 +73,7 @@ public class PresentationController {
         presentationService.update(presentationDto, presentationId);
         logger.info("¡Presentación del portafolio de "+ownerUsername+" actualizada con éxito!");
 
-        return new ResponseEntity<>(presentationDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(presentationDto, HttpStatus.OK);
     }
 
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")

@@ -11,6 +11,7 @@ import com.juliandonati.backendPortafolio.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +53,7 @@ public class PortfolioController {
 
                 userService.save(user); // Efecto cascáda. portfolioRepository automáticamente guardará a newPortfolio y se actualizará la JoinTable.
                 logger.info("¡Portafolio de "+ownerUsername+" creado con éxito!");
-                return ResponseEntity.ok(portfolioMapper.toPortfolioResponseDto(newPortfolio));
+                return new ResponseEntity<>(portfolioMapper.toPortfolioResponseDto(newPortfolio), HttpStatus.CREATED);
         }
         else
             throw new DuplicatedAttributeException("No puede haber más de un portafolio por usuario.");

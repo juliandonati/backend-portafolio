@@ -3,7 +3,6 @@ package com.juliandonati.backendPortafolio.controller;
 import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.dto.JobDto;
 import com.juliandonati.backendPortafolio.mapper.JobMapper;
-import com.juliandonati.backendPortafolio.security.service.UserService;
 import com.juliandonati.backendPortafolio.service.JobService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
 import jakarta.validation.Valid;
@@ -69,7 +68,7 @@ public class JobController {
 
     @PutMapping("/{jobId}")
     @PreAuthorize("@jobSecurityEvaluator.isOwner(#jobId,authentication.name) or hasRole('ADMIN')")
-    public ResponseEntity<JobDto> updatedJob(@PathVariable Long jobId, @Valid @RequestBody JobDto jobDto){
+    public ResponseEntity<JobDto> updateJob(@PathVariable Long jobId, @Valid @RequestBody JobDto jobDto){
         logger.debug("Recuperando el trabajo de id: "+jobId);
         JobDto updatedJob = jobService.update(jobDto, jobId);
         logger.info("¡Trabajo de id: "+jobId+" actualizado con éxito!");
