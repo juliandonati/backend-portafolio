@@ -1,12 +1,15 @@
 package com.juliandonati.backendPortafolio.controller;
 
+import com.juliandonati.backendPortafolio.domain.Degree;
 import com.juliandonati.backendPortafolio.domain.Portfolio;
+import com.juliandonati.backendPortafolio.domain.Skill;
 import com.juliandonati.backendPortafolio.dto.PortfolioResponseDto;
 import com.juliandonati.backendPortafolio.exception.DuplicatedAttributeException;
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.mapper.PortfolioMapper;
 import com.juliandonati.backendPortafolio.security.domain.User;
 import com.juliandonati.backendPortafolio.security.service.UserService;
+import com.juliandonati.backendPortafolio.service.FileStorageService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -15,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 
 @RestController
@@ -26,15 +31,16 @@ public class PortfolioController {
     private final PortfolioMapper portfolioMapper;
 
     private final UserService userService;
+    private final FileStorageService fileStorageService;
 
     private final Logger logger = LoggerFactory.getLogger(PortfolioController.class);
 
-    // TODOS, incluso quienes no están logueados pueden acceder a éste metodo
+    // TODOS, incluso quienes no están logueados pueden acceder a este metodo
     @GetMapping("/{ownerUsername}")
     public ResponseEntity<PortfolioResponseDto> getPortfolioByOwner(@PathVariable String ownerUsername){
-        logger.debug("Recuperando el portafolio de: "+ownerUsername);
+        logger.debug("Recuperando el portafolio de: {}", ownerUsername);
         PortfolioResponseDto portfolioResponseDto = portfolioMapper.toPortfolioResponseDto(portfolioService.findByOwnerUsername(ownerUsername));
-        logger.info("¡Portafolio de "+ownerUsername+" recuperado con éxito!");
+        logger.info("¡Portafolio de {} recuperado con éxito!", ownerUsername);
 
         return ResponseEntity.ok(portfolioResponseDto);
     }
@@ -42,17 +48,17 @@ public class PortfolioController {
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
     @PostMapping("/{ownerUsername}")
     public ResponseEntity<PortfolioResponseDto> createPortfolio(@PathVariable String ownerUsername){
-        logger.debug("Verificando si existe el portafolio de "+ownerUsername);
+        logger.debug("Verificando si existe el portafolio de {}", ownerUsername);
         if(!portfolioService.existsByOwnerUsername(ownerUsername)){
-                logger.debug("El portafolio de "+ownerUsername+" no existe, buscando usuario...");
+                logger.debug("El portafolio de {} no existe, buscando usuario...", ownerUsername);
                 User user = userService.findByUsername(ownerUsername);
-                logger.debug("El usuario de "+ownerUsername+" existe, creando portafolio...");
+                logger.debug("El usuario de {} existe, creando portafolio...", ownerUsername);
                 Portfolio newPortfolio = new Portfolio();
                 newPortfolio.setOwner(user);
                 user.setOwnedPortfolio(newPortfolio);
 
-                userService.save(user); // Efecto cascáda. portfolioRepository automáticamente guardará a newPortfolio y se actualizará la JoinTable.
-                logger.info("¡Portafolio de "+ownerUsername+" creado con éxito!");
+                userService.save(user); // Efecto cascada. portfolioRepository automáticamente guardará a newPortfolio y se actualizará la JoinTable.
+            logger.info("¡Portafolio de {} creado con éxito!", ownerUsername);
                 return new ResponseEntity<>(portfolioMapper.toPortfolioResponseDto(newPortfolio), HttpStatus.CREATED);
         }
         else
@@ -61,27 +67,38 @@ public class PortfolioController {
 
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
     @DeleteMapping("/{ownerUsername}")
-    public ResponseEntity<String> deletePortfolio(@PathVariable String ownerUsername){
-        logger.debug("Verificando si existe el usuario de "+ownerUsername);
+    public ResponseEntity<String> deletePortfolio(@PathVariable String ownerUsername) throws Exception{
+        logger.debug("Verificando si existe el usuario de {}", ownerUsername);
         User user = userService.findByUsername(ownerUsername);
 
-        logger.debug("Verificando si "+ownerUsername+" tiene un portafolio");
-        if(user.getOwnedPortfolio() == null)
+        logger.debug("Verificando si {} tiene un portafolio", ownerUsername);
+        Portfolio portfolio = user.getOwnedPortfolio();
+        if(portfolio == null)
             throw new ResourceNotFoundException("El usuario no tiene un portfolio");
 
-        logger.debug(ownerUsername+" tiene un portafolio, eliminando...");
-        user.setOwnedPortfolio(null); // orphanRemoval elimina automaticamente el portfolio
+        logger.debug("{} tiene un portafolio, eliminando...", ownerUsername);
+
+        logger.debug("Eliminando todas las imágenes del portafolio...");
+        List<String> imgUrlList = new ArrayList<>(portfolio.getSkills().stream().map(Skill::getImgUrl).toList());
+        imgUrlList.add(portfolio.getPresentation().getImgUrl());
+        imgUrlList.addAll(portfolio.getDegrees().stream().map(Degree::getImgUrl).toList());
+
+        for(String imgUrl : imgUrlList)
+            fileStorageService.deleteImageByUrl(imgUrl);
+        logger.debug("¡Imágenes eliminadas con éxito!");
+
+        user.setOwnedPortfolio(null); // orphanRemoval elimina automáticamente el portfolio
         userService.save(user);
 
         logger.debug("Se guardo el usuario ahora sin portafolio");
-        logger.info("¡Portafolio de "+ownerUsername+" eliminado con éxito!");
+        logger.info("¡Portafolio de {} eliminado con éxito!", ownerUsername);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{ownerUsername}/exists")
     public ResponseEntity<Boolean> existsPortfolio(@PathVariable String ownerUsername){
         try{
-            logger.debug("Verificando si existe un portafolio de dueño: "+ownerUsername);
+            logger.debug("Verificando si existe un portafolio de dueño: {}", ownerUsername);
             boolean exists = portfolioService.existsByOwnerUsername(ownerUsername);
             logger.info(exists ? "¡Existe!": "No existe." );
             return ResponseEntity.ok(exists);

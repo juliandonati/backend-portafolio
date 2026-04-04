@@ -57,4 +57,19 @@ public class SkillServiceImpl implements SkillService {
     public List<SkillDto> findSkillsByOwnerUsername(String username) {
         return skillRepository.findByOwnerUsername(username).stream().map(skillMapper::toDto).toList();
     }
+
+    @Override
+    public String findOwnerUsernameBySkillId(Long id) throws ResourceNotFoundException {
+        return skillRepository.findOwnerUsernameBySkillId(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró una habilidad con la id: " + id));
+    }
+
+    @Override
+    public String findImgUrlBySkillId(Long id) throws ResourceNotFoundException {
+        return skillRepository.findImgUrlBySkillId(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró una habilidad con la id: " + id));
+    }
+
+    @Override
+    public List<String> findImgUrlsByOwnerUsername(String username) {
+        return skillRepository.findImgUrlsByOwnerUsername(username);
+    }
 }

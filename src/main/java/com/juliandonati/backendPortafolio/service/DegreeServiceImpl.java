@@ -58,4 +58,19 @@ public class DegreeServiceImpl implements DegreeService {
     public List<DegreeDto> findByOwnerUsername(String username) throws ResourceNotFoundException {
         return degreeRepository.findByOwnerUsername(username).stream().map(degreeMapper::toDto).toList();
     }
+
+    @Override
+    public String findImgUrlByDegreeId(Long id) throws ResourceNotFoundException {
+        return degreeRepository.findImgUrlByDegreeId(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró un título académico de id: " + id));
+    }
+
+    @Override
+    public List<String> findImgUrlsByOwnerUsername(String ownerUsername) throws ResourceNotFoundException {
+        return degreeRepository.findImgUrlsByOwnerUsername(ownerUsername);
+    }
+
+    @Override
+    public String findOwnerUsernameByDegreeId(Long id) throws ResourceNotFoundException {
+        return degreeRepository.findOwnerUsernameByDegreeId(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró un título académico de id: " + id));
+    }
 }

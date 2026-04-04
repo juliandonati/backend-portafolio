@@ -27,6 +27,22 @@ public interface SkillRepository extends JpaRepository<Skill, Long> {
             "WHERE u.username = :username")
     List<Skill> findByOwnerUsername(@Param("username") String username);
 
+    @Query("SELECT owner.username FROM Skill s " +
+            "JOIN s.portfolio AS p " +
+            "JOIN p.owner AS owner " +
+            "WHERE s.id = :id")
+    Optional<String> findOwnerUsernameBySkillId(@Param("id") Long id);
+
+    @Query("SELECT s.imgUrl from Skill s " +
+            "WHERE s.id = :id")
+    Optional<String> findImgUrlBySkillId(@Param("id") Long id);
+
+    @Query("SELECT s.imgUrl from User u " +
+            " JOIN u.ownedPortfolio AS p " +
+            " JOIN p.skills AS s " +
+            " WHERE u.username = :ownerUsername")
+    List<String> findImgUrlsByOwnerUsername(@Param("ownerUsername") String ownerUsername);
+
     @Query("SELECT CASE WHEN count(skillOwner) > 0 and skillOwner = :username THEN TRUE ELSE FALSE END FROM Skill s " +
             "JOIN s.portfolio AS p " +
             "JOIN p.owner AS skillOwner " +

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -16,6 +17,12 @@ public interface PresentationRepository extends JpaRepository<Presentation, Long
             "JOIN p.presentation AS presentation " +
             "WHERE u.username = :username")
     Optional<Presentation> findByOwnerUsername(@Param("username") String username);
+
+    @Query("SELECT pres.imgUrl FROM User u " +
+            " JOIN u.ownedPortfolio AS port " +
+            " JOIN port.presentation AS pres " +
+            " WHERE u.username = :ownerUsername ")
+    Optional<String> findImgUrlByOwnerUsername(@Param("ownerUsername") String ownerUsername);
 
     @Query("SELECT CASE WHEN count(presentation) > 0 THEN TRUE ELSE FALSE END " +
             "FROM User u " +

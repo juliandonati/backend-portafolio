@@ -2,7 +2,9 @@ package com.juliandonati.backendPortafolio.controller;
 
 import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.dto.SkillDto;
+import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.mapper.SkillMapper;
+import com.juliandonati.backendPortafolio.service.FileStorageService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
 import com.juliandonati.backendPortafolio.service.SkillService;
 import jakarta.validation.Valid;
@@ -10,10 +12,13 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -25,6 +30,8 @@ public class SkillController {
     private final SkillMapper skillMapper;
 
     private final PortfolioService portfolioService;
+
+    private final FileStorageService fileStorageService;
 
     private final Logger logger = LoggerFactory.getLogger(SkillController.class);
 
@@ -38,13 +45,24 @@ public class SkillController {
         return ResponseEntity.ok(skillDtos);
     }
 
-    @PostMapping("/{ownerUsername}")
+    @PostMapping(path = "/{ownerUsername}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
-    public ResponseEntity<List<SkillDto>> createSkill(@PathVariable String ownerUsername, @Valid @RequestBody SkillDto skillDto){
+    public ResponseEntity<List<SkillDto>> createSkill(@PathVariable String ownerUsername,
+                                                      @Valid @RequestPart("skill") SkillDto skillDto,
+                                                      @RequestPart(required = false, value = "img-file") MultipartFile imgMpFile)
+    throws IOException {
         logger.debug("Buscando portafolio de "+ownerUsername);
         Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
 
         logger.debug("Portafolio de "+ownerUsername+" encontrado, añadiendo habilidad...");
+
+        if(imgMpFile != null && !imgMpFile.isEmpty()){
+            logger.debug("El usuario agregó una imagen, subiendo...");
+            String imgUrl = fileStorageService.uploadImage(imgMpFile,ownerUsername);
+            logger.debug("¡Imagen subida con éxito!");
+            skillDto.setImgUrl(imgUrl);
+        }
+
         portfolio.addSkill(skillMapper.toEntity(skillDto));
         List<SkillDto> updatedSkillDtos = portfolioService.save(portfolio)
                 .getSkills()
@@ -68,7 +86,26 @@ public class SkillController {
 
     @PutMapping("/{skillId}")
     @PreAuthorize("@skillSecurityEvaluator.isOwner(#skillId,authentication.name) or hasRole('ADMIN')")
-    public ResponseEntity<SkillDto> updateSkill(@PathVariable Long skillId, @Valid @RequestBody SkillDto skillDto){
+    public ResponseEntity<SkillDto> updateSkill(@PathVariable Long skillId,
+                                                @Valid @RequestPart("skill") SkillDto skillDto,
+                                                @RequestPart(required = false, value = "img-file") MultipartFile imgMpFile)
+    throws Exception {
+
+        if(imgMpFile != null && !imgMpFile.isEmpty()){
+            logger.debug("El usuario agregó una imagen, subiendo...");
+            String imgUrl = fileStorageService.uploadImage(imgMpFile, skillService.findOwnerUsernameBySkillId(skillId));
+            logger.debug("¡Imagen subida con éxito!");
+
+            String oldImgUrl = skillService.findImgUrlBySkillId(skillId);
+            if(oldImgUrl != null && !oldImgUrl.isEmpty()){
+                logger.debug("Eliminando imagen vieja...");
+                fileStorageService.deleteImageByUrl(oldImgUrl);
+                logger.debug("¡Imagen vieja eliminada con éxito!");
+            }
+
+            skillDto.setImgUrl(imgUrl);
+        }
+
         logger.debug("Actualizando habilidad de id: "+skillId+'!');
         SkillDto updatedSkillDto = skillService.update(skillDto, skillId);
         logger.info("¡Habilidad de id: "+skillDto+" actualizada con éxito!");
@@ -77,8 +114,16 @@ public class SkillController {
 
     @DeleteMapping("/{skillId}")
     @PreAuthorize("@skillSecurityEvaluator.isOwner(#skillId,authentication.name) or hasRole('ADMIN')")
-    public ResponseEntity<Void> deleteSkill(@PathVariable Long skillId){
+    public ResponseEntity<Void> deleteSkill(@PathVariable Long skillId) throws Exception{
         logger.debug("Eliminando habilidad de id: "+skillId+'!');
+
+        String imgUrl = skillService.findImgUrlBySkillId(skillId);
+        if(imgUrl != null && !imgUrl.isEmpty()){
+            logger.debug("Eliminando imagen de la habilidad...");
+            fileStorageService.deleteImageByUrl(imgUrl);
+            logger.debug("¡Imagen eliminada con éxito!");
+        }
+
         skillService.deleteById(skillId);
         logger.info("¡Habilidad de id: "+skillId+" eliminada con éxito!");
 

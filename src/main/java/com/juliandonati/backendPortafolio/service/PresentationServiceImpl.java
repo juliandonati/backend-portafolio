@@ -61,6 +61,11 @@ public class PresentationServiceImpl implements PresentationService {
     }
 
     @Override
+    public String findImgUrlByOwnerUsername(String username) throws ResourceNotFoundException {
+        return presentationRepository.findImgUrlByOwnerUsername(username).orElseThrow(() -> new ResourceNotFoundException("No se encontró una presentación del usuario: " + username));
+    }
+
+    @Override
     public boolean existsByOwnerUsername(String username) {
         return presentationRepository.existsByOwnerUsername(username);
     }
