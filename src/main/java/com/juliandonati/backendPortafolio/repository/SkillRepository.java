@@ -43,9 +43,9 @@ public interface SkillRepository extends JpaRepository<Skill, Long> {
             " WHERE u.username = :ownerUsername")
     List<String> findImgUrlsByOwnerUsername(@Param("ownerUsername") String ownerUsername);
 
-    @Query("SELECT CASE WHEN count(skillOwner) > 0 and skillOwner = :username THEN TRUE ELSE FALSE END FROM Skill s " +
+    @Query("SELECT CASE WHEN count(skillOwner) > 0 THEN TRUE ELSE FALSE END FROM Skill s " +
             "JOIN s.portfolio AS p " +
             "JOIN p.owner AS skillOwner " +
-            "WHERE s.id = :id")
+            "WHERE s.id = :id and skillOwner.username = :username ")
     boolean isSkillByIdOwnedByUsername(@Param("id")  Long id, @Param("username") String username);
 }

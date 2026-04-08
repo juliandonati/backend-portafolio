@@ -117,11 +117,13 @@ public class SkillController {
     public ResponseEntity<Void> deleteSkill(@PathVariable Long skillId) throws Exception{
         logger.debug("Eliminando habilidad de id: "+skillId+'!');
 
-        String imgUrl = skillService.findImgUrlBySkillId(skillId);
-        if(imgUrl != null && !imgUrl.isEmpty()){
+        try{
             logger.debug("Eliminando imagen de la habilidad...");
-            fileStorageService.deleteImageByUrl(imgUrl);
+            fileStorageService.deleteImageByUrl(skillService.findImgUrlBySkillId(skillId));
             logger.debug("¡Imagen eliminada con éxito!");
+        }
+        catch(ResourceNotFoundException e){
+            logger.debug("La habilidad no tiene una imagen que eliminar.");
         }
 
         skillService.deleteById(skillId);

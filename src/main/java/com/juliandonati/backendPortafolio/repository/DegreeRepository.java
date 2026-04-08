@@ -43,9 +43,9 @@ public interface DegreeRepository extends JpaRepository<Degree, Long> {
             "WHERE u.username = :username")
     List<Degree> findByOwnerUsername(@Param("username") String username);
 
-    @Query("SELECT CASE WHEN count(degreeOwner) > 0 and degreeOwner = :username THEN TRUE ELSE FALSE END FROM Degree d " +
+    @Query("SELECT CASE WHEN count(degreeOwner) > 0 THEN TRUE ELSE FALSE END FROM Degree d " +
             "JOIN d.portfolio AS p " +
             "JOIN p.owner AS degreeOwner " +
-            "WHERE d.id = :id")
+            "WHERE d.id = :id and degreeOwner.username = :username")
     boolean isDegreeByIdOwnedByUsername(@Param("id")  Long id, @Param("username") String username);
 }

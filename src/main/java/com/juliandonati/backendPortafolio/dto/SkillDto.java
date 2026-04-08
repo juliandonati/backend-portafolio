@@ -2,11 +2,14 @@ package com.juliandonati.backendPortafolio.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class SkillDto {
     private Long id;
     @NotBlank(message="Debes introducir un nombre para la habilidad")

@@ -102,6 +102,8 @@ public class DataLoader implements CommandLineRunner {
 
             adminTestPortfolio.addExperience(new Job(null,"TRABAJO 1","POSICIÓN TRABAJO 1","DESCRIPCIÓN TRABAJO 1",LocalDate.now(),null,adminTestPortfolio));
 
+            adminTestPortfolio.addDegree(new Degree(null, "Ingeniería en Sistemas", "la mejor de todas",LocalDate.now(),null,null,adminTestPortfolio));
+
             adminTestPortfolio.setOwner(adminTestUser);
             adminTestUser.setOwnedPortfolio(adminTestPortfolio);
 

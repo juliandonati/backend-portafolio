@@ -3,6 +3,7 @@ package com.juliandonati.backendPortafolio.controller;
 import com.juliandonati.backendPortafolio.domain.Degree;
 import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.dto.DegreeDto;
+import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.mapper.DegreeMapper;
 import com.juliandonati.backendPortafolio.service.DegreeService;
 import com.juliandonati.backendPortafolio.service.FileStorageService;
@@ -107,9 +108,16 @@ public class DegreeController {
     public ResponseEntity<Void> deleteDegree(@PathVariable Long degreeId) throws Exception{
         logger.debug("Eliminando título académico de id: {}", degreeId);
 
-        logger.debug("Eliminando imagen del título académico...");
-        fileStorageService.deleteImageByUrl(degreeService.findImgUrlByDegreeId(degreeId));
-        logger.debug("¡Imagen del título académico eliminada con éxito!");
+        try{
+
+            logger.debug("Eliminando imagen del título académico...");
+            fileStorageService.deleteImageByUrl(degreeService.findImgUrlByDegreeId(degreeId));
+            logger.debug("¡Imagen del título académico eliminada con éxito!");
+        }
+        catch(ResourceNotFoundException e){
+            logger.debug("El título académico no tiene imagen que eliminar.");
+        }
+
 
         degreeService.deleteById(degreeId);
         logger.info("¡Título académico de id: {} eliminado con éxito!", degreeId);

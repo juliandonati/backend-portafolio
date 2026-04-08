@@ -2,13 +2,16 @@ package com.juliandonati.backendPortafolio.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class DegreeDto {
     private Long id;
     @NotBlank(message = "Debes ingresar el nombre del título académico")
