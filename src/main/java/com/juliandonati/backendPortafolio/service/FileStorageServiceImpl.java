@@ -54,7 +54,8 @@ public class FileStorageServiceImpl implements FileStorageService{
         if(imageUrl != null) {
             int lastSlashIndex = imageUrl.lastIndexOf('/');
             int extensionDotIndex = imageUrl.lastIndexOf('.');
-            String imagePublicId = imageUrl.substring(lastSlashIndex, extensionDotIndex);
+            String imagePublicId = imageUrl.substring(lastSlashIndex+1, extensionDotIndex);
+
 
             logger.debug("Eliminando imagen de publicId = {}",imagePublicId);
 
