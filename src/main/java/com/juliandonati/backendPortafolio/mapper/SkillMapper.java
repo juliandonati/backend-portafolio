@@ -11,7 +11,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface SkillMapper {
     SkillDto toDto(Skill skill);
 
-    @Mapping(target = "id", ignore = true)
     @Mapping(target = "portfolio", ignore = true)
     Skill toEntity(SkillDto dto);
 
