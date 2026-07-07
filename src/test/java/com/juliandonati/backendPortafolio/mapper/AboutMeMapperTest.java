@@ -11,7 +11,7 @@ class AboutMeMapperTest {
     AboutMeMapper aboutMeMapper = Mappers.getMapper(AboutMeMapper.class);
 
     @Test
-    void testMapAboutMeToAboutMeDtoSuccessfully() {
+    void testMapAboutMeEntityToAboutMeDtoSuccessfully() {
         Long mockId = 1L;
         String mockTitle = "Sobre mí", mockDesc = "Me encanta programar aplicaciones en Java.", mockImgUrl = "http://bgimage.com",
         mockBtnText = "Presiona aquí", mockBtnUrl = "http://github.com";

@@ -11,7 +11,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface DegreeMapper {
     DegreeDto toDto(Degree entity);
 
-    @Mapping(target="id",ignore = true)
     @Mapping(target="portfolio",ignore = true)
     Degree toEntity(DegreeDto dto);
 
