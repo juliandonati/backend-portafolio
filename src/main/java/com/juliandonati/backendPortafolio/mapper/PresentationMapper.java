@@ -11,7 +11,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface PresentationMapper {
     PresentationDto toDto(Presentation entity);
 
-    @Mapping(target = "id", ignore = true)
     @Mapping(target = "portfolio", ignore = true)
     Presentation toEntity(PresentationDto dto);
 
