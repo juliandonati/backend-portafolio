@@ -3,7 +3,6 @@ package com.juliandonati.backendPortafolio.service;
 import com.juliandonati.backendPortafolio.domain.AboutMe;
 import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.dto.AboutMeDto;
-import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.security.domain.User;
 import com.juliandonati.backendPortafolio.security.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -88,17 +87,54 @@ class AboutMeServiceTest {
 
     @Test
     void testFindAboutMeByOwnerUsernameReturnsAboutMe() {
+        // Arrange
+        String ownerUsername = "usuarioTest";
+        User user = new User(null, ownerUsername, "password", "displayName", "user@example.com", Set.of(), null, Set.of());
+        userService.save(user);
+        Portfolio portfolio = new Portfolio();
+        portfolio.setOwner(user);
+        String title = "About Me", desc = "Love to code solutions", imgUrl = "http://www,imgurl.test", btnText = "Click here!", btnUrl = "https://www.github.com";
+        AboutMe aboutMe = new AboutMe(null, title, desc, imgUrl, btnText, btnUrl, portfolio);
+        portfolio.setAboutMe(aboutMe);
+        portfolioService.save(portfolio);
+
+        // Act
+        AboutMeDto result = aboutMeService.findByOwnerUsername(ownerUsername);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(title,result.getTitle());
+        assertEquals(desc,result.getDescription());
+        assertEquals(imgUrl,result.getBgImgUrl());
+        assertEquals(btnText,result.getButtonText());
+        assertEquals(btnUrl,result.getButtonUrl());
     }
 
     @Test
     void testAboutMeExistsByOwnerUsernameReturnsTrue() {
+        // Arrange
+        String ownerUsername = "usuarioTest";
+        User user = new User(null, ownerUsername, "password", "displayName", "user@example.com", Set.of(), null, Set.of());
+        userService.save(user);
+        Portfolio portfolio = new Portfolio();
+        portfolio.setOwner(user);
+        AboutMe aboutMe = new AboutMe(null, "titulo placeholder", "descripcion placeholder", null, null, null, portfolio);
+        portfolio.setAboutMe(aboutMe);
+        portfolioService.save(portfolio);
+
+        // Act
+        boolean result = aboutMeService.existsByOwnerUsername(ownerUsername);
+
+        // Assert
+        assertTrue(result);
     }
 
     @Test
     void testAboutMeExistsByOwnerUsernameReturnsFalse() {
-    }
+        // Act
+        boolean result = aboutMeService.existsByOwnerUsername("usuarioinexistente");
 
-    @Test
-    void testDeleteAboutMeByOwnerUsernameDeletesAboutMeSuccessfully() {
+        // Assert
+        assertFalse(result);
     }
 }
