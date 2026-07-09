@@ -86,7 +86,7 @@ public class PortfolioServiceImpl implements PortfolioService{
 
         Portfolio portfolio = presentation.getPortfolio();
         if(portfolio != null){
-            portfolio.setAboutMe(null);
+            portfolio.setPresentation(null);
             presentation.setPortfolio(null);
             portfolioRepository.save(portfolio);
         }

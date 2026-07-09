@@ -1,8 +1,12 @@
 package com.juliandonati.backendPortafolio.service;
 
+import com.juliandonati.backendPortafolio.domain.AboutMe;
 import com.juliandonati.backendPortafolio.domain.Portfolio;
+import com.juliandonati.backendPortafolio.domain.Presentation;
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
+import com.juliandonati.backendPortafolio.repository.AboutMeRepository;
 import com.juliandonati.backendPortafolio.repository.PortfolioRepository;
+import com.juliandonati.backendPortafolio.repository.PresentationRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,11 +22,13 @@ import static org.mockito.Mockito.*;
 class PortfolioServiceImplTest {
     @Mock
     PortfolioRepository portfolioRepository;
+    @Mock
+    PresentationRepository presentationRepository;
+    @Mock
+    AboutMeRepository aboutMeRepository;
 
     @InjectMocks
     PortfolioServiceImpl portfolioService;
-
-    // todo Agregar tests de eliminación de Presentation y AboutMe faltantes.
 
     @Test
     void testFindPortfolioByIdReturnsPortfolio() {
@@ -144,4 +150,57 @@ class PortfolioServiceImplTest {
         verify(portfolioRepository,times(1)).existsById(mockId);
         verify(portfolioRepository,never()).deleteById(any(Long.class));
     }
+
+    @Test
+    void testDeleteAboutMeByIdDeletesAboutMeSuccessfully() {
+        long mockAboutMeId = 1L;
+        Portfolio mockPortfolio = new Portfolio();
+        AboutMe mockAboutMe = new AboutMe(mockAboutMeId,null,null,null,null,null,mockPortfolio);
+        mockPortfolio.setAboutMe(mockAboutMe);
+        when(aboutMeRepository.findById(mockAboutMeId)).thenReturn(Optional.of(mockAboutMe));
+
+        assertDoesNotThrow(()->portfolioService.deleteAboutMeById(mockAboutMeId));
+
+        assertNull(mockPortfolio.getAboutMe(),"Si se eliminó el About-Me, debe ser nulo en la entidad del portfolio.");
+        verify(aboutMeRepository,times(1)).findById(mockAboutMeId);
+        verify(portfolioRepository,times(1)).save(mockPortfolio); // (Se guarda el portafolio con el About-Me removido, hay orphan-removal)
+    }
+
+    @Test
+    void testDeleteAboutMeByIdThrowsResourceNotFoundException() {
+        long mockAboutMeId = 999L;
+        when(aboutMeRepository.findById(mockAboutMeId)).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class,()->portfolioService.deleteAboutMeById(mockAboutMeId));
+        verify(aboutMeRepository,times(1)).findById(mockAboutMeId);
+        verify(portfolioRepository,never()).save(any(Portfolio.class));
+    }
+
+    // No creo un test si el portafolio no existe, porque si el AboutMe o el Presentation se quedara huérfano, no existiría en primer lugar.
+
+    @Test
+    void testDeletePresentationByIdDeletesPresentationSuccessfully() {
+        Portfolio mockPortfolio = new Portfolio();
+
+        long mockPresentationId = 1L;
+        Presentation mockPresentation = new Presentation(mockPresentationId,null,null,null,null,null,null,mockPortfolio);
+        mockPortfolio.setPresentation(mockPresentation);
+        when(presentationRepository.findById(mockPresentationId)).thenReturn(Optional.of(mockPresentation));
+
+        assertDoesNotThrow(()->portfolioService.deletePresentationById(mockPresentationId),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
+        assertNull(mockPortfolio.getPresentation(),"Si se eliminó el Presentation, debe ser nulo en la entidad del portafolio");
+        verify(presentationRepository,times(1)).findById(mockPresentationId);
+        verify(portfolioRepository,times(1)).save(mockPortfolio);
+    }
+
+    @Test
+    void testDeletePresentationByIdThrowsResourceNotFoundException() {
+        long mockPresentationId = 999L;
+        when(presentationRepository.findById(mockPresentationId)).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class,()->portfolioService.deletePresentationById(mockPresentationId));
+        verify(presentationRepository,times(1)).findById(mockPresentationId);
+        verify(portfolioRepository,never()).save(any(Portfolio.class));
+    }
+
 }
