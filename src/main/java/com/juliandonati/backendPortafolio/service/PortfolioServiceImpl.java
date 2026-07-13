@@ -7,9 +7,7 @@ import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.repository.AboutMeRepository;
 import com.juliandonati.backendPortafolio.repository.PortfolioRepository;
 import com.juliandonati.backendPortafolio.repository.PresentationRepository;
-import com.juliandonati.backendPortafolio.security.domain.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,8 +61,15 @@ public class PortfolioServiceImpl implements PortfolioService{
     @Override
     @Transactional
     public void deleteById(long id) {
-        if(!portfolioRepository.existsById(id))
-            throw new ResourceNotFoundException("No se encontró un portfolio con la id: " + id);
+        Portfolio portfolioToDelete = portfolioRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("No se encontró un portfolio con la id: " + id));
+
+        portfolioToDelete.setSkills(null);
+        portfolioToDelete.setExperience(null);
+        portfolioToDelete.setDegrees(null);
+        portfolioToDelete.setAboutMe(null);
+        portfolioToDelete.setPresentation(null);
+        portfolioRepository.save(portfolioToDelete);
+
         portfolioRepository.deleteById(id);
     }
 
