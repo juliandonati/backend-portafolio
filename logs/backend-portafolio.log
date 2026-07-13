@@ -1,493 +1,102 @@
-2026-07-10 21:04:53.135 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 16488 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:04:53.139 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:04:53.140 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:04:55.814 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:04:55.942 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 116 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:04:57.549 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:04:57.599 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:04:57.875 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:04:57.876 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:04:59.486 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:04:59.641 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:05:02.041 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:05:02.245 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:05:03.250 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 11.185 seconds (process running for 13.971)
-2026-07-10 21:05:03.739 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:05:03.753 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:05:03.755 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 21:05:03.758 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:05:03.791 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 16488 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:05:03.791 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:05:03.791 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:05:04.142 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:05:04.192 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:05:04.303 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:05:04.304 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2026-07-10 21:05:04.306 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:05:04.307 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2026-07-10 21:05:04.430 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:05:04.643 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:05:04.676 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:05:04.935 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 1.177 seconds (process running for 15.656)
-2026-07-10 21:05:05.638 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:05:05.643 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2026-07-10 21:05:05.643 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2026-07-10 21:05:36.782 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 12704 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:05:36.783 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:05:36.783 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:05:37.871 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:05:38.003 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 121 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:05:39.285 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:05:39.319 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:05:39.513 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:05:39.515 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:05:40.830 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:05:40.972 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:05:42.454 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:05:42.621 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:05:43.585 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 7.273 seconds (process running for 8.821)
-2026-07-10 21:05:44.046 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:05:44.056 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:05:44.059 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 21:05:44.062 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:05:44.099 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 12704 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:05:44.099 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:05:44.100 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:05:44.456 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:05:44.509 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 49 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:05:44.621 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:05:44.622 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2026-07-10 21:05:44.624 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:05:44.624 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2026-07-10 21:05:44.737 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:05:44.939 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:05:44.975 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:05:45.237 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 1.175 seconds (process running for 10.473)
-2026-07-10 21:05:45.925 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:05:45.929 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2026-07-10 21:05:45.931 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2026-07-10 21:09:42.513 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 23456 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:09:42.531 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:09:42.532 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:09:44.257 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:09:44.352 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 86 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:09:45.566 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:09:45.604 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:09:46.609 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:09:46.611 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:09:48.001 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:09:48.110 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:09:49.516 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:09:49.704 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:09:50.608 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 8.548 seconds (process running for 10.789)
-2026-07-10 21:09:51.012 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:09:51.021 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:09:51.023 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 21:09:51.027 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:09:51.056 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 23456 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:09:51.056 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:09:51.057 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:09:51.349 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:09:51.398 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 46 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:09:51.503 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:09:51.504 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2026-07-10 21:09:51.506 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:09:51.506 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2026-07-10 21:09:51.613 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:09:51.833 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:09:51.860 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:09:52.049 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 1.022 seconds (process running for 12.23)
-2026-07-10 21:09:52.680 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:09:52.685 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2026-07-10 21:09:52.694 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2026-07-10 21:11:26.583 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 10616 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:11:26.584 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:11:26.585 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:11:27.482 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:11:27.585 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:11:28.626 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:11:28.668 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:11:28.857 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:11:28.859 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:11:30.134 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:11:30.271 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:11:31.547 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:11:31.692 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:11:32.500 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 6.276 seconds (process running for 7.69)
-2026-07-10 21:11:32.905 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:11:32.914 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:11:32.916 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 21:11:32.918 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:11:32.947 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 10616 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:11:32.947 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:11:32.947 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:11:33.213 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:11:33.251 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:11:33.345 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:11:33.346 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2026-07-10 21:11:33.347 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:11:33.348 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2026-07-10 21:11:33.438 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:11:33.595 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:11:33.621 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:11:33.989 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 1.07 seconds (process running for 9.179)
-2026-07-10 21:11:34.506 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:11:34.510 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2026-07-10 21:11:34.511 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2026-07-10 21:11:41.514 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 18940 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:11:41.515 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:11:41.516 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:11:42.363 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:11:42.460 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 88 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:11:43.488 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:11:43.518 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:11:43.684 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:11:43.686 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:11:44.763 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:11:44.869 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:11:46.103 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:11:46.243 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:11:46.954 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 5.808 seconds (process running for 7.075)
-2026-07-10 21:11:47.341 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:11:47.349 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:11:47.350 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 21:11:47.353 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:11:47.378 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 18940 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:11:47.379 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:11:47.379 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:11:47.622 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:11:47.662 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 38 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:11:47.767 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:11:47.768 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2026-07-10 21:11:47.769 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:11:47.770 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2026-07-10 21:11:47.856 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:11:48.003 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:11:48.026 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:11:48.242 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 0.889 seconds (process running for 8.362)
-2026-07-10 21:11:48.760 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:11:48.764 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2026-07-10 21:11:48.772 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2026-07-10 21:24:12.901 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 7592 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:24:12.902 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:24:12.904 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:24:13.874 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:24:13.975 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:24:15.227 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:24:15.266 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:24:15.447 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:24:15.449 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:24:16.605 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:24:16.714 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:24:17.991 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:24:18.130 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:24:18.896 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 6.379 seconds (process running for 7.926)
-2026-07-10 21:24:19.304 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:24:19.312 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:24:19.314 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 21:24:19.317 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:24:19.350 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 7592 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:24:19.350 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:24:19.350 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:24:19.611 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:24:19.665 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 52 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:24:19.768 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:24:19.769 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2026-07-10 21:24:19.770 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:24:19.771 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2026-07-10 21:24:19.863 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:24:20.036 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:24:20.068 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:24:20.340 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 1.023 seconds (process running for 9.37)
-2026-07-10 21:24:20.853 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:24:20.857 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2026-07-10 21:24:20.858 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2026-07-10 21:33:58.216 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 5788 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:33:58.217 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:33:58.218 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:33:59.208 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:33:59.316 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 97 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:34:00.506 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:34:00.541 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:34:00.747 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:34:00.750 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:34:01.956 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:02.079 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:34:03.413 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:34:03.562 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:34:04.399 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 6.64 seconds (process running for 9.165)
-2026-07-10 21:34:04.844 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:04.853 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:34:04.855 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 21:34:04.858 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:34:04.884 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 5788 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:34:04.884 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:34:04.884 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:34:05.171 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:34:05.222 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 36 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:34:05.320 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:34:05.321 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2026-07-10 21:34:05.322 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:34:05.323 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2026-07-10 21:34:05.412 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:05.615 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:34:05.644 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:34:05.823 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 0.966 seconds (process running for 10.59)
-2026-07-10 21:34:06.345 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:06.350 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2026-07-10 21:34:06.351 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2026-07-10 21:34:06.353 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:34:06.377 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 5788 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:34:06.378 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:34:06.378 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:34:06.610 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:34:06.645 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:34:06.745 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:34:06.746 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
-2026-07-10 21:34:06.747 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:34:06.748 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
-2026-07-10 21:34:06.834 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:06.995 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:34:07.033 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:34:07.230 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 0.877 seconds (process running for 11.997)
-2026-07-10 21:34:07.421 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:07.425 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
-2026-07-10 21:34:07.426 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
-2026-07-10 21:34:07.428 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:34:07.450 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 5788 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:34:07.450 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:34:07.450 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:34:07.659 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:34:07.693 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:34:07.778 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:34:07.780 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
-2026-07-10 21:34:07.781 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:34:07.782 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
-2026-07-10 21:34:07.921 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:08.062 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:34:08.085 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:34:08.256 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 0.828 seconds (process running for 13.022)
-2026-07-10 21:34:08.449 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:08.453 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
-2026-07-10 21:34:08.453 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
-2026-07-10 21:34:08.455 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:34:08.477 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 5788 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:34:08.477 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:34:08.477 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:34:08.669 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:34:08.700 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:34:08.771 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:34:08.772 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
-2026-07-10 21:34:08.773 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-5 - Added connection conn40: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:34:08.773 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
-2026-07-10 21:34:08.844 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:08.983 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:34:09.005 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:34:09.157 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 0.702 seconds (process running for 13.923)
-2026-07-10 21:34:09.333 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:09.337 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
-2026-07-10 21:34:09.337 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
-2026-07-10 21:34:09.339 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:34:09.357 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 5788 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:34:09.358 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:34:09.358 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:34:09.548 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:34:09.580 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:34:09.650 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:34:09.651 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Starting...
-2026-07-10 21:34:09.653 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-6 - Added connection conn50: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:34:09.653 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Start completed.
-2026-07-10 21:34:09.718 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:09.845 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:34:09.879 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:34:10.059 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 0.72 seconds (process running for 14.825)
-2026-07-10 21:34:10.251 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:34:10.254 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown initiated...
-2026-07-10 21:34:10.254 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown completed.
-2026-07-10 21:35:22.142 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 3664 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:35:22.143 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:35:22.143 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:35:23.010 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:35:23.098 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 79 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:35:24.251 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:35:24.281 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:35:24.441 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:35:24.443 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:35:25.561 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:35:25.664 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:35:26.993 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:35:27.120 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:35:27.891 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 6.115 seconds (process running for 7.394)
-2026-07-10 21:35:28.271 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:35:28.279 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:35:28.280 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 21:35:28.284 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
-2026-07-10 21:35:28.308 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 3664 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:35:28.308 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:35:28.308 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:35:28.584 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:35:28.620 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:35:28.701 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:35:28.703 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2026-07-10 21:35:28.704 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:35:28.704 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2026-07-10 21:35:28.789 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:35:28.988 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:35:29.021 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:35:29.237 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 0.953 seconds (process running for 8.74)
-2026-07-10 21:35:29.775 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:35:29.779 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2026-07-10 21:35:29.780 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2026-07-10 21:35:38.660 INFO  c.j.b.s.PresentationServiceTest - Starting PresentationServiceTest using Java 25.0.1 with PID 20612 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:35:38.661 DEBUG c.j.b.s.PresentationServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:35:38.662 INFO  c.j.b.s.PresentationServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:35:39.498 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:35:39.596 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 88 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:35:40.590 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:35:40.618 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:35:40.772 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:35:40.773 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:35:41.795 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:35:41.903 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:35:43.092 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:35:43.217 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:35:43.921 INFO  c.j.b.s.PresentationServiceTest - Started PresentationServiceTest in 5.626 seconds (process running for 6.88)
-2026-07-10 21:35:44.660 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:35:44.668 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:35:44.670 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 21:59:02.876 INFO  c.j.b.service.DegreeServiceTest - Starting DegreeServiceTest using Java 25.0.1 with PID 13532 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 21:59:02.877 DEBUG c.j.b.service.DegreeServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 21:59:02.877 INFO  c.j.b.service.DegreeServiceTest - The following 1 profile is active: "test"
-2026-07-10 21:59:03.751 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 21:59:03.845 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 85 ms. Found 8 JPA repository interfaces.
-2026-07-10 21:59:04.863 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 21:59:04.892 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 21:59:05.052 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 21:59:05.053 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 21:59:06.107 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:59:06.208 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 21:59:07.443 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 21:59:07.577 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 21:59:08.415 INFO  c.j.b.service.DegreeServiceTest - Started DegreeServiceTest in 5.903 seconds (process running for 7.173)
-2026-07-10 21:59:09.193 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 21:59:09.200 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 21:59:09.202 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 22:00:38.051 INFO  c.j.b.service.DegreeServiceTest - Starting DegreeServiceTest using Java 25.0.1 with PID 14808 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 22:00:38.052 DEBUG c.j.b.service.DegreeServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 22:00:38.052 INFO  c.j.b.service.DegreeServiceTest - The following 1 profile is active: "test"
-2026-07-10 22:00:38.918 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 22:00:39.012 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 86 ms. Found 8 JPA repository interfaces.
-2026-07-10 22:00:40.039 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 22:00:40.072 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 22:00:40.245 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 22:00:40.247 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 22:00:41.368 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:00:41.478 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 22:00:42.616 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 22:00:42.738 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 22:00:43.437 INFO  c.j.b.service.DegreeServiceTest - Started DegreeServiceTest in 5.744 seconds (process running for 6.998)
-2026-07-10 22:00:44.209 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:00:44.217 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 22:00:44.218 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 22:02:37.497 INFO  c.j.b.service.DegreeServiceTest - Starting DegreeServiceTest using Java 25.0.1 with PID 18212 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 22:02:37.498 DEBUG c.j.b.service.DegreeServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 22:02:37.498 INFO  c.j.b.service.DegreeServiceTest - The following 1 profile is active: "test"
-2026-07-10 22:02:38.394 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 22:02:38.489 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 85 ms. Found 8 JPA repository interfaces.
-2026-07-10 22:02:39.492 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 22:02:39.524 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 22:02:39.688 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 22:02:39.689 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 22:02:40.723 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:02:40.835 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 22:02:42.079 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 22:02:42.215 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 22:02:42.983 INFO  c.j.b.service.DegreeServiceTest - Started DegreeServiceTest in 5.841 seconds (process running for 7.072)
-2026-07-10 22:02:43.775 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:02:43.784 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 22:02:43.786 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 22:03:19.734 INFO  c.j.b.service.JobServiceTest - Starting JobServiceTest using Java 25.0.1 with PID 13392 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 22:03:19.735 DEBUG c.j.b.service.JobServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 22:03:19.735 INFO  c.j.b.service.JobServiceTest - The following 1 profile is active: "test"
-2026-07-10 22:03:20.636 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 22:03:20.729 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 85 ms. Found 8 JPA repository interfaces.
-2026-07-10 22:03:21.794 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 22:03:21.824 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 22:03:21.987 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 22:03:21.989 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 22:03:23.094 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:03:23.202 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 22:03:24.543 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 22:03:24.706 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 22:03:25.559 INFO  c.j.b.service.JobServiceTest - Started JobServiceTest in 6.196 seconds (process running for 7.539)
-2026-07-10 22:03:26.385 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:03:26.394 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 22:03:26.396 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 22:04:37.828 INFO  c.j.b.service.JobServiceTest - Starting JobServiceTest using Java 25.0.1 with PID 20784 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 22:04:37.829 DEBUG c.j.b.service.JobServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 22:04:37.829 INFO  c.j.b.service.JobServiceTest - The following 1 profile is active: "test"
-2026-07-10 22:04:38.678 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 22:04:38.771 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 85 ms. Found 8 JPA repository interfaces.
-2026-07-10 22:04:39.766 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 22:04:39.802 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 22:04:39.971 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 22:04:39.973 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 22:04:41.040 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:04:41.127 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 22:04:42.349 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 22:04:42.469 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 22:04:43.156 INFO  c.j.b.service.JobServiceTest - Started JobServiceTest in 5.682 seconds (process running for 6.901)
-2026-07-10 22:04:43.893 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:04:43.900 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 22:04:43.901 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 22:04:53.535 INFO  c.j.b.service.JobServiceTest - Starting JobServiceTest using Java 25.0.1 with PID 14588 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 22:04:53.536 DEBUG c.j.b.service.JobServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 22:04:53.537 INFO  c.j.b.service.JobServiceTest - The following 1 profile is active: "test"
-2026-07-10 22:04:54.377 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 22:04:54.472 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 86 ms. Found 8 JPA repository interfaces.
-2026-07-10 22:04:55.536 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 22:04:55.569 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 22:04:55.746 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 22:04:55.747 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 22:04:56.787 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:04:56.873 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 22:04:57.996 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 22:04:58.124 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 22:04:58.836 INFO  c.j.b.service.JobServiceTest - Started JobServiceTest in 5.67 seconds (process running for 6.944)
-2026-07-10 22:04:59.574 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:04:59.583 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 22:04:59.584 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 22:06:58.488 INFO  c.j.b.service.DegreeServiceTest - Starting DegreeServiceTest using Java 25.0.1 with PID 11312 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 22:06:58.489 DEBUG c.j.b.service.DegreeServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 22:06:58.489 INFO  c.j.b.service.DegreeServiceTest - The following 1 profile is active: "test"
-2026-07-10 22:06:59.325 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 22:06:59.418 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 83 ms. Found 8 JPA repository interfaces.
-2026-07-10 22:07:00.425 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 22:07:00.454 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 22:07:00.624 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 22:07:00.626 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 22:07:01.675 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:07:01.783 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 22:07:03.064 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 22:07:03.194 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 22:07:03.925 INFO  c.j.b.service.DegreeServiceTest - Started DegreeServiceTest in 5.79 seconds (process running for 7.01)
-2026-07-10 22:07:04.740 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:07:04.748 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 22:07:04.749 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-07-10 22:09:09.365 INFO  c.j.b.service.JobServiceTest - Starting JobServiceTest using Java 25.0.1 with PID 22480 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-07-10 22:09:09.366 DEBUG c.j.b.service.JobServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-07-10 22:09:09.366 INFO  c.j.b.service.JobServiceTest - The following 1 profile is active: "test"
-2026-07-10 22:09:10.222 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-10 22:09:10.325 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 82 ms. Found 8 JPA repository interfaces.
-2026-07-10 22:09:11.351 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-10 22:09:11.382 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-07-10 22:09:11.554 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-07-10 22:09:11.556 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-07-10 22:09:12.627 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:09:12.719 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-10 22:09:13.900 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-07-10 22:09:14.031 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-10 22:09:14.767 INFO  c.j.b.service.JobServiceTest - Started JobServiceTest in 5.761 seconds (process running for 6.991)
-2026-07-10 22:09:15.540 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-10 22:09:15.548 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-07-10 22:09:15.550 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-13 17:36:05.450 INFO  c.j.b.service.SkillServiceTest - Starting SkillServiceTest using Java 25.0.1 with PID 13304 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-07-13 17:36:05.453 DEBUG c.j.b.service.SkillServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-07-13 17:36:05.455 INFO  c.j.b.service.SkillServiceTest - The following 1 profile is active: "test"
+2026-07-13 17:36:07.364 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13 17:36:07.560 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 184 ms. Found 8 JPA repository interfaces.
+2026-07-13 17:36:08.899 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13 17:36:08.936 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-13 17:36:09.148 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-13 17:36:09.149 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-13 17:36:10.407 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:36:10.506 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-13 17:36:11.755 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-07-13 17:36:11.884 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13 17:36:12.653 INFO  c.j.b.service.SkillServiceTest - Started SkillServiceTest in 7.791 seconds (process running for 9.833)
+2026-07-13 17:36:13.480 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:36:13.488 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-13 17:36:13.490 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-13 17:39:18.193 INFO  c.j.b.service.SkillServiceTest - Starting SkillServiceTest using Java 25.0.1 with PID 14412 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-07-13 17:39:18.195 DEBUG c.j.b.service.SkillServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-07-13 17:39:18.196 INFO  c.j.b.service.SkillServiceTest - The following 1 profile is active: "test"
+2026-07-13 17:39:19.153 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13 17:39:19.255 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 93 ms. Found 8 JPA repository interfaces.
+2026-07-13 17:39:20.439 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13 17:39:20.474 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-13 17:39:20.652 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-13 17:39:20.653 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-13 17:39:22.012 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:39:22.105 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-13 17:39:23.360 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-07-13 17:39:23.514 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13 17:39:24.313 INFO  c.j.b.service.SkillServiceTest - Started SkillServiceTest in 6.514 seconds (process running for 7.943)
+2026-07-13 17:39:25.050 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:39:25.059 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-13 17:39:25.061 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-13 17:45:07.183 INFO  c.j.b.service.SkillServiceTest - Starting SkillServiceTest using Java 25.0.1 with PID 18684 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-07-13 17:45:07.184 DEBUG c.j.b.service.SkillServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-07-13 17:45:07.184 INFO  c.j.b.service.SkillServiceTest - The following 1 profile is active: "test"
+2026-07-13 17:45:08.037 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13 17:45:08.129 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 83 ms. Found 8 JPA repository interfaces.
+2026-07-13 17:45:09.137 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13 17:45:09.167 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-13 17:45:09.320 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-13 17:45:09.322 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-13 17:45:10.370 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:45:10.480 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-13 17:45:11.649 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-07-13 17:45:11.782 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13 17:45:12.539 INFO  c.j.b.service.SkillServiceTest - Started SkillServiceTest in 5.724 seconds (process running for 7.027)
+2026-07-13 17:45:13.265 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:45:13.274 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-13 17:45:13.276 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-13 17:45:16.523 INFO  c.j.b.service.SkillServiceTest - Starting SkillServiceTest using Java 25.0.1 with PID 17860 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-07-13 17:45:16.524 DEBUG c.j.b.service.SkillServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-07-13 17:45:16.525 INFO  c.j.b.service.SkillServiceTest - The following 1 profile is active: "test"
+2026-07-13 17:45:17.469 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13 17:45:17.566 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 88 ms. Found 8 JPA repository interfaces.
+2026-07-13 17:45:18.698 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13 17:45:18.732 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-13 17:45:18.911 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-13 17:45:18.912 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-13 17:45:20.084 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:45:20.201 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-13 17:45:21.444 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-07-13 17:45:21.595 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13 17:45:22.421 INFO  c.j.b.service.SkillServiceTest - Started SkillServiceTest in 6.289 seconds (process running for 7.631)
+2026-07-13 17:45:23.365 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:45:23.374 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-13 17:45:23.376 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-13 17:46:42.613 INFO  c.j.b.service.SkillServiceTest - Starting SkillServiceTest using Java 25.0.1 with PID 11976 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-07-13 17:46:42.614 DEBUG c.j.b.service.SkillServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-07-13 17:46:42.615 INFO  c.j.b.service.SkillServiceTest - The following 1 profile is active: "test"
+2026-07-13 17:46:43.621 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13 17:46:43.719 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 8 JPA repository interfaces.
+2026-07-13 17:46:44.769 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13 17:46:44.799 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-13 17:46:44.967 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-13 17:46:44.968 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-13 17:46:46.096 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:46:46.191 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-13 17:46:47.417 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-07-13 17:46:47.584 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13 17:46:48.376 INFO  c.j.b.service.SkillServiceTest - Started SkillServiceTest in 6.181 seconds (process running for 7.621)
+2026-07-13 17:46:49.088 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 17:46:49.096 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-13 17:46:49.098 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-13 18:07:20.501 INFO  c.j.b.service.SkillServiceTest - Starting SkillServiceTest using Java 25.0.1 with PID 6664 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-07-13 18:07:20.502 DEBUG c.j.b.service.SkillServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-07-13 18:07:20.502 INFO  c.j.b.service.SkillServiceTest - The following 1 profile is active: "test"
+2026-07-13 18:07:21.399 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13 18:07:21.499 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 8 JPA repository interfaces.
+2026-07-13 18:07:22.556 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13 18:07:22.589 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-13 18:07:22.760 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-07-13 18:07:22.763 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-13 18:07:23.833 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 18:07:23.919 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-13 18:07:25.069 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-07-13 18:07:25.205 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13 18:07:25.955 INFO  c.j.b.service.SkillServiceTest - Started SkillServiceTest in 5.83 seconds (process running for 7.153)
+2026-07-13 18:07:26.763 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13 18:07:26.772 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-13 18:07:26.774 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

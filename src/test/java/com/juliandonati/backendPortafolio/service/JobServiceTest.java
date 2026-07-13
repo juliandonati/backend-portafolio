@@ -33,8 +33,6 @@ class JobServiceTest {
     @Autowired
     private JobService jobService;
 
-    private final String ownerUsername = MiscTestUtilities.TEST_OWNER_USERNAME;
-
     private final String jobName1 = "Google";
     private final String jobName2 = "Apple";
     private final String jobPos1 = "Data Analyst";
@@ -56,6 +54,7 @@ class JobServiceTest {
         portfolioRepository.save(portfolio);
 
         // Act
+        String ownerUsername = MiscTestUtilities.TEST_OWNER_USERNAME;
         List<JobDto> result = jobService.findByOwnerUsername(ownerUsername);
         JobDto jobDto1 = result.stream().filter(jobDto -> jobDto.getName().equals(jobName1)).findFirst().orElseThrow(()->new AssertionError("No se encontró el trabajo "+jobName1+" en la Base de Datos")),
                 jobDto2 = result.stream().filter(jobDto -> jobDto.getName().equals(jobName2)).findFirst().orElseThrow(()->new AssertionError("No se encontró el trabajo "+jobName2+" en la Base de Datos"));

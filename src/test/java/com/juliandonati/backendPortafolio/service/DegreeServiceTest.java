@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_OWNER_USERNAME;
 import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.createPortfolio;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,8 +35,6 @@ class DegreeServiceTest {
     @Autowired
     private DegreeService degreeService;
 
-    private final String ownerUsername = MiscTestUtilities.TEST_OWNER_USERNAME;
-
     @Test
     void testFindDegreeByOwnerUsernameReturnsListOfDegreesSuccessfully() {
         // Arrange
@@ -48,7 +47,7 @@ class DegreeServiceTest {
         portfolioRepository.save(portfolioToSave);
 
         // Act
-        List<DegreeDto> result = degreeService.findByOwnerUsername(ownerUsername);
+        List<DegreeDto> result = degreeService.findByOwnerUsername(TEST_OWNER_USERNAME);
 
         // Assert
         assertNotNull(result);
@@ -94,7 +93,7 @@ class DegreeServiceTest {
 
         // Assert
         assertNotNull(result);
-        assertEquals(ownerUsername,result);
+        assertEquals(TEST_OWNER_USERNAME,result);
     }
 
     @Test

@@ -13,6 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_OWNER_USERNAME;
 import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.createAndSaveUser;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,8 +27,6 @@ class PresentationServiceTest {
     private PortfolioRepository portfolioRepository;
     @Autowired
     private PresentationService presentationService;
-
-    private final String ownerUsername = MiscTestUtilities.TEST_OWNER_USERNAME;
 
     private final String presentationName = "nombre pres.";
     private final String presentationTitle = "titulo pres.";
@@ -52,7 +51,7 @@ class PresentationServiceTest {
         portfolioRepository.save(portfolio);
 
         // Act
-        PresentationDto result = presentationService.findByOwnerUsername(ownerUsername);
+        PresentationDto result = presentationService.findByOwnerUsername(TEST_OWNER_USERNAME);
 
         // Assert
         assertAll("Validando campos del PresentationDto...",
@@ -73,7 +72,7 @@ class PresentationServiceTest {
         portfolioRepository.save(portfolio);
 
         // Act
-        String result = presentationService.findImgUrlByOwnerUsername(ownerUsername);
+        String result = presentationService.findImgUrlByOwnerUsername(TEST_OWNER_USERNAME);
 
         // Assert
         assertNotNull(result);
@@ -87,7 +86,7 @@ class PresentationServiceTest {
         portfolioRepository.save(portfolio);
 
         // Act
-        boolean result = presentationService.existsByOwnerUsername(ownerUsername);
+        boolean result = presentationService.existsByOwnerUsername(TEST_OWNER_USERNAME);
 
         // Assert
         assertTrue(result);
@@ -96,7 +95,7 @@ class PresentationServiceTest {
     @Test
     void testPresentationExistsByOwnerUsernameReturnsFalse() {
         // Act
-        boolean result = presentationService.existsByOwnerUsername(ownerUsername);
+        boolean result = presentationService.existsByOwnerUsername(TEST_OWNER_USERNAME);
 
         // Assert
         assertFalse(result);
@@ -157,6 +156,6 @@ class PresentationServiceTest {
                 () -> assertEquals(newPresentationPhone, updatedPresentationDto.getPhoneNumber())
         );
 
-        // DELETE -> Se testea en PortfolioServiceTest, el método le pertenece a PortfolioService
+        // DELETE -> Se testea en PortfolioServiceTest, el metodo le pertenece a PortfolioService
     }
 }

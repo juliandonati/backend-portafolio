@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_OWNER_USERNAME;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -26,8 +27,6 @@ class AboutMeServiceTest {
     @Autowired
     private AboutMeService aboutMeService;
 
-    private final String ownerUsername = MiscTestUtilities.TEST_OWNER_USERNAME;
-
     private final String title = "About Me";
     private final String desc = "Love to code solutions";
     private final String imgUrl = "http://www,imgurl.test";
@@ -36,7 +35,7 @@ class AboutMeServiceTest {
 
 
     Portfolio createPortfolioWithAboutMe(){
-        User user = new User(null, ownerUsername, "password", "displayName", "user@example.com", Set.of(), null, Set.of());
+        User user = new User(null, TEST_OWNER_USERNAME, "password", "displayName", "user@example.com", Set.of(), null, Set.of());
         userService.save(user);
         Portfolio portfolio = new Portfolio();
         portfolio.setOwner(user);
@@ -102,7 +101,7 @@ class AboutMeServiceTest {
         portfolioService.save(portfolio);
 
         // Act
-        AboutMeDto result = aboutMeService.findByOwnerUsername(ownerUsername);
+        AboutMeDto result = aboutMeService.findByOwnerUsername(TEST_OWNER_USERNAME);
 
         // Assert
         assertNotNull(result);
@@ -120,7 +119,7 @@ class AboutMeServiceTest {
         portfolioService.save(portfolio);
 
         // Act
-        boolean result = aboutMeService.existsByOwnerUsername(ownerUsername);
+        boolean result = aboutMeService.existsByOwnerUsername(TEST_OWNER_USERNAME);
 
         // Assert
         assertTrue(result);
