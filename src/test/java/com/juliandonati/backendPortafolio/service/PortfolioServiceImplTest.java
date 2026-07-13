@@ -134,20 +134,20 @@ class PortfolioServiceImplTest {
     @Test
     void testDeletePortfolioByIdDeletesPortfolioSuccesfully() {
         Long mockId = 34L;
-        when(portfolioRepository.existsById(mockId)).thenReturn(true);
+        when(portfolioRepository.findById(mockId)).thenReturn(Optional.of(new Portfolio()));
 
         assertDoesNotThrow(()->portfolioService.deleteById(mockId),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
-        verify(portfolioRepository,times(1)).existsById(mockId);
+        verify(portfolioRepository,times(1)).findById(mockId);
         verify(portfolioRepository,times(1)).deleteById(mockId);
     }
 
     @Test
     void testDeletePortfolioByIdThrowsResourceNotFoundException() {
         Long mockId = 999L;
-        when(portfolioRepository.existsById(mockId)).thenReturn(false);
+        when(portfolioRepository.findById(mockId)).thenReturn(Optional.of(new Portfolio()));
 
         assertThrows(ResourceNotFoundException.class,()->portfolioService.deleteById(mockId));
-        verify(portfolioRepository,times(1)).existsById(mockId);
+        verify(portfolioRepository,times(1)).findById(mockId);
         verify(portfolioRepository,never()).deleteById(any(Long.class));
     }
 
