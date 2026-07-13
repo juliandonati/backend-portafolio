@@ -160,7 +160,6 @@ class PortfolioServiceImplTest {
         when(aboutMeRepository.findById(mockAboutMeId)).thenReturn(Optional.of(mockAboutMe));
 
         assertDoesNotThrow(()->portfolioService.deleteAboutMeById(mockAboutMeId));
-
         assertNull(mockPortfolio.getAboutMe(),"Si se eliminó el About-Me, debe ser nulo en la entidad del portfolio.");
         verify(aboutMeRepository,times(1)).findById(mockAboutMeId);
         verify(portfolioRepository,times(1)).save(mockPortfolio); // (Se guarda el portafolio con el About-Me removido, hay orphan-removal)
